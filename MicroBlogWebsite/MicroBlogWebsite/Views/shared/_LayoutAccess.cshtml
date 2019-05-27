@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+
+<html id="LayoutAccessHtml">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/css/LayoutAccessStyle.css" rel="stylesheet" />
+
+    @RenderSection("head",required:true)    @*定义head*@  
+</head>
+<body>
+    @* 上导航栏 *@
+    <div id="navDiv" class="navDivBox">
+        <nav class="nav-site">
+            <ul class="nav-site-ul">
+                <li class="nav-site-ul-li1">@Html.ActionLink("首页", "Default", "Access")</li>
+                
+                <li style="margin-left:300px;">@Html.ActionLink("登录", "Login", "Access")/@Html.ActionLink("注册", "Register", "Access")</li>
+            </ul>
+        </nav>
+    </div>
+    
+
+    <div style="padding-top:215px;"></div>
+    <div>
+        @RenderBody()
+    </div>
+
+
+    @* 页脚 *@
+    <div id="site-footer" class="site-footer-div">
+        <div class="foot-div">
+            <div style="margin:0px auto;width:1200px">
+                <div class="foot-div1">
+                    <ul>
+                        <li class="first-li">招商热线</li>
+                        <li>电话：170-0088-8888</li>
+                        <li>传真：190-088-8888</li>
+                    </ul>
+                </div>
+                <div class="foot-div2">
+                    <ul>
+                        <li class="first-li">合作伙伴</li>
+                        <li>欢迎与我们合作</li>
+                        <li>传真：190-088-8888</li>
+                    </ul>
+                </div>
+                <div class="foot-div3">
+                    <ul>
+                        <li class="first-li">关于我们</li>
+                        <li><a href="javascript:">绝世倾城</a></li>
+                        <li><a href="javascript:">踏浪官方</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="foot-copy">&copy;绝世倾城踏浪微博版权所有</div>
+        </div>
+    </div>
+</body>
+</html>

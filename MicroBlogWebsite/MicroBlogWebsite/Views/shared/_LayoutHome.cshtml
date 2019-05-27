@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+
+<html id="LayoutHomeHtml">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/css/LayoutHomeStyle.css" rel="stylesheet" />
+    @RenderSection("head", required: true)  @*View页面自定义特定js/css使用*@
+</head>
+<body>
+    @* 上导航栏 *@
+    <div id="navDiv" class="navDivBox">
+        <nav class="nav-site">
+            <ul class="nav-site-ul">
+                <li class="nav-site-ul-li1">@Html.ActionLink("首页", "Index", "Home",new { }, new { @class = "navli" })</li>
+                <li>@Html.ActionLink("个人中心", "", new { }, new { @class = "navli" })</li>
+                <li>@Html.ActionLink("账户设置", "", new { }, new { @class = "navli" })</li>
+                @*<li>@Html.ActionLink("登录", "Login","Access")/@Html.ActionLink("注册", "Register","Access")</li>*@
+
+                @* 登录之后显示退出按钮 *@
+                <li>@Html.ActionLink("退出", "Default", "Access",new { }, new { @class = "navli" })</li>
+            </ul>
+        </nav>
+    </div>
+
+    @* 下导航栏，登录之后才显示 *@
+    <div id="navUserDiv">
+        <nav class="nav-site-user">
+            <ul class="nav-siteuser-ul">
+                <li>@Html.ActionLink("我的主页", "", new { id = "navUserli" }, new { @class = "navUserli" })</li>
+                <li>@Html.ActionLink("我的微博", "Mymicrobolg","Home", new { }, new { @class = "navUserli" })</li>
+                <li>@Html.ActionLink("我的好友", "", new { }, new { @class = "navUserli" })</li>
+                <li>@*@Html.TextBoxFor("搜索"){}*@<input type="text" placeholder="搜索" style="border:1px solid #808080;border-radius:8px;width:180px;height:30px;font-size:18px;" />&nbsp;&nbsp;
+                <button style="width: 50px; height: 30px; border-radius: 8px;cursor:pointer">搜索</button>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+            </ul>
+        </nav>
+    </div>
+
+
+
+    <div>
+        @RenderBody()
+    </div>
+
+
+    @* 页脚 *@
+    <div id="site-footer" class="site-footer-div">
+        <div class="foot-div">
+            <div style="margin:0px auto;width:1200px">
+                <div class="foot-div1">
+                    <ul>
+                        <li class="first-li">招商热线</li>
+                        <li>电话：170-0088-8888</li>
+                        <li>传真：190-088-8888</li>
+                    </ul>
+                </div>
+                <div class="foot-div2">
+                    <ul>
+                        <li class="first-li">合作伙伴</li>
+                        <li>欢迎与我们合作</li>
+                        <li>传真：190-088-8888</li>
+                    </ul>
+                </div>
+                <div class="foot-div3">
+                    <ul>
+                        <li class="first-li">关于我们</li>
+                        <li><a href="javascript:">绝世倾城</a></li>
+                        <li><a href="javascript:">踏浪官方</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="foot-copy">&copy;绝世倾城踏浪微博版权所有</div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\DAL\bin\Debug\DAL.dll.config
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\DAL\bin\Debug\DAL.dll
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\DAL\bin\Debug\DAL.pdb
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\DAL\bin\Debug\EntityFramework.dll
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\DAL\bin\Debug\EntityFramework.SqlServer.dll
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\DAL\bin\Debug\Models.dll
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\DAL\bin\Debug\Models.pdb
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\DAL\bin\Debug\EntityFramework.xml
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\DAL\bin\Debug\EntityFramework.SqlServer.xml
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\DAL\obj\Debug\DAL.dll
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\DAL\obj\Debug\DAL.pdb

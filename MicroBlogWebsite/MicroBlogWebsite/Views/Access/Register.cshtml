@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/shared/_LayoutAccess.cshtml";
+}
+
+<div id="Register-DivBox" style="width:inherit;height:600px;">
+    <div class="panel panel-success">
+        <div class="panel-heading text-center"><h4>注册</h4></div>
+        <div class="panel-body">
+
+            @using (@Html.BeginForm("Register", "Home", FormMethod.Post, new { @id = "" }))
+            {
+                @Html.ValidationSummary(true)
+                @*@Html.ValidationMessage("fghfg")*@
+
+                <h4 class="form-Tips">@*@Html.ValidationMessageFor(m => m.Name, null, new { @style = "color:red;" })*@</h4>
+                <div class="form-group" style="margin-left:25px;">
+                    <label>@*用户名：*@</label>
+                    @*用户名：@Html.TextBoxFor(x => x.Name, new { placeholder = "用户名", @class = "form-control" })*@
+                </div>
+
+                <h4 class="form-Tips">@*@Html.ValidationMessageFor(m => m.Email, null, new { @style = "color:red" })*@</h4>
+                <div class="form-group" style="margin-left:51px">
+                    @*<label>邮箱：</label>*@
+                    @*邮箱：@Html.TextBoxFor(x => x.Email, new { placeholder = "邮箱", @class = "form-control" })*@
+                </div>
+
+                <h4 class="form-Tips">@*@Html.ValidationMessageFor(m => m.Password, null, new { @style = "color:red" })*@</h4>
+                <div class="form-group" style="margin-left:51px">
+                    @*<label>密码：</label>*@
+                    @*密码：@Html.PasswordFor(x => x.Password, new { placeholder = "密码", @class = "form-control" })*@
+                </div>
+
+                <h4 class="form-Tips">@*@Html.ValidationMessageFor(m => m.ConfirmPassword, null, new { @style = "color:red" })*@</h4>
+                <div class="form-group">
+                    @*<label>确认密码：</label>*@
+                    @*确认密码：@Html.PasswordFor(x => x.ConfirmPassword, new { placeholder = "确认密码", @class = "form-control" })*@
+                </div>
+
+
+                <h4 class="form-Tips" style="color:red">@*@Html.ValidationMessageFor(m => m.VerificationCode, null, new { @style = "color:red" })@ViewBag.VerificaCode @Html.ViewBag.failInSend*@</h4> @*failInSend邮箱发送失败*@
+                <div class="form-group" style="margin-left:36px;">
+                    @*<input type="text" class="form-control" style="width:30%;" />*@
+                    @*验证码： @Html.TextBoxFor(x => x.VerificationCode, new { placeholder = "验证码", @style = "width:30%;", @class = "form-control" })*@
+
+                    <input class="btn btn-success" id="Obtain" name="huoqu" type="submit" style="width:110px;height:40px" value="@Html.Value("fasong")" />  @*@Html.Value("fasong")*@
+
+                    @*@Html.ActionLink("获取", "Emails")*@
+
+                    <br />
+                </div>
+
+                <div class="text-center">
+                    <input class="btn btn-success" type="submit" value="注册" name="huoqu" />
+                </div>
+            }
+
+
+            <script type="text/javascript">
+                $(function () {
+                    var wait = 60;
+                    function time(obj) {
+                        if (wait == 0) {
+                            obj.className = 'btnCode';
+                            obj.removeAttribute("disabled");
+                            obj.value = "获取";
+                            wait = 60;  //waait等于0的时候重新赋值
+                        } else {
+                            obj.className = 'btnCodeDisabled';//按钮变灰，不可点击
+                            obj.setAttribute("disabled", true);
+                            obj.value = "重新发送(" + wait + "秒)";
+                            wait--;
+                            setTimeout(function () {
+                                time(obj)
+                            },
+                            1000)
+                        }
+                    }
+                    window.onload = function () {//发送验证码成功按钮编程灰色不可点击状态，并激活60秒倒计时
+                        //document.getElementById("Obtain").
+                        if (document.getElementById("Obtain").value == "发送成功") {
+                            time(document.getElementById("Obtain"));
+                        }
+                    }
+                })
+            </script>
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,128 @@
+﻿* {
+    list-style: none;
+    text-decoration: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+#LayoutHomeHtml {
+    background-image: url("/Content/images/LayoutHome/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    /*background-color:yellow;*/
+}
+
+/*上导航栏*/
+.navDivBox {
+    width: 100%;
+    height: 50px;
+    /*background-color:#caeaf8;*/
+}
+
+.nav-site {
+    width: 1300px;
+    height: 50px;
+    margin: 0px auto;
+    border: 1px solid red;
+}
+
+.nav-site-ul li {
+    float: left;
+    line-height: 50px;
+    margin-left: 50px;
+}
+
+.nav-site-ul-li1 {
+    margin-right: 800px;
+}
+/*上导航条字体样式*/
+.navli:hover {
+    color:red;
+}
+
+/*下导航栏*/
+#navUserDiv {
+    padding-top: 150px;
+    width: 100%;
+    height: 50px;
+    padding-bottom: 15px;
+}
+
+.nav-site-user {
+    width: 1300px;
+    height: 50px;
+    margin: 0px auto;
+    /*border:1px solid #00ff90;*/
+}
+
+.nav-siteuser-ul {
+    opacity: 0.8;
+    background-color: #7bc5db;
+    float: right;
+    border-radius: 10px;
+}
+
+    .nav-siteuser-ul li {
+        float: left;
+        line-height: 50px;
+        margin-left: 50px;
+    }
+/*下导航栏字体样式*/
+.navUserli {
+    font-size: 25px;
+    color: #edecec;
+}
+
+    .navUserli:hover {
+        font-size:25px;
+        color: #ffffff;
+    }
+
+
+/*页脚*/
+
+.site-footer-div {
+    width:inherit;
+    height:300px;
+    /*background: linear-gradient(red, blue); /* 标准的语法 */
+    background:linear-gradient(#bf87be, #713fb1);
+    opacity:0.8;
+}
+.foot-div {
+    margin:0px auto;
+    width:1300px;
+    height:300px;
+    /*border:1px solid Red;*/
+}
+.foot-div1,.foot-div2,.foot-div3 {
+    padding-top:15px;
+    float:left;
+    width:400px;
+    height:200px;
+}
+.foot-div>div>div>ul {
+    text-align:center;
+    /*border:1px solid Red;*/
+    color:#313030;
+}
+    .first-li {
+        color:#000;
+        font-size:28px;
+        padding-bottom:20px;
+    }
+.foot-div > div > div > ul > li > a {
+    color:#313030;
+}
+    .foot-div > div > div > ul > li > a:hover {
+        color:blue;
+    }
+
+
+/*版权信息*/
+.foot-copy {
+    /*float:none;*/
+    width:210px;
+    height:50px;
+    margin:0px auto;
+}
+

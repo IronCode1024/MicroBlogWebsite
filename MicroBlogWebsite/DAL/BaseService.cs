@@ -14,7 +14,10 @@ namespace DAL
     public class BaseService<T> : IDisposable where T : Models.BaseEntity, new()// new T();添加new()约束
     {
         //public Model.StudentContext DbContext { get; set; } = new Model.StudentContext();
-        public Models.UserInfoContext DbContext = new Models.UserInfoContext();
+        /// <summary>
+        /// 实例化上下文
+        /// </summary>
+        public static Models.UserInfoContext DbContexts = new Models.UserInfoContext();
 
 
         /// <summary>
@@ -26,8 +29,8 @@ namespace DAL
         {
             //DbContext.Student
             //DbContext.Class
-            DbContext.Set<T>().Add(t);
-            await DbContext.SaveChangesAsync();//异步方法
+            DbContexts.Set<T>().Add(t);
+            await DbContexts.SaveChangesAsync();//异步方法
         }
         //Task<返回值类型>，没有返回值就不写尖括号，save的时候需要异步
 
@@ -40,8 +43,8 @@ namespace DAL
         {
             //DbContext.Student
             //DbContext.Class
-            DbContext.Entry(t).State = System.Data.Entity.EntityState.Modified;
-            await DbContext.SaveChangesAsync();//异步方法
+            DbContexts.Entry(t).State = System.Data.Entity.EntityState.Modified;
+            await DbContexts.SaveChangesAsync();//异步方法
         }
 
 
@@ -54,8 +57,8 @@ namespace DAL
         {
             var t = new T();//需要在上面添加new()约束
             t.Id = id;
-            DbContext.Entry(t).State = System.Data.Entity.EntityState.Modified;
-            await DbContext.SaveChangesAsync();//异步方法
+            DbContexts.Entry(t).State = System.Data.Entity.EntityState.Modified;
+            await DbContexts.SaveChangesAsync();//异步方法
         }
 
 
@@ -67,11 +70,11 @@ namespace DAL
         {
             //DbContext.Students.Where().wher().orderby().skip().take();
             //Track跟踪
-            return DbContext.Set<T>().Where(m => m.IsRemoved == false).AsNoTracking();
+            return DbContexts.Set<T>().Where(m => m.IsRemoved == false).AsNoTracking();
         }
 
         /// <summary>
-        /// 条件查询
+        /// 条件查询  
         /// </summary>
         /// <param name="predicate">委托，兰姆达表达式</param>
         /// <returns></returns>
@@ -105,9 +108,9 @@ namespace DAL
             //var t = new T() { Id = id };
             var t = new T();
             t.Id = id;
-            DbContext.Entry(t).State = System.Data.Entity.EntityState.Unchanged;
+            DbContexts.Entry(t).State = System.Data.Entity.EntityState.Unchanged;
             t.IsRemoved = false;
-            await DbContext.SaveChangesAsync();
+            await DbContexts.SaveChangesAsync();
         }
 
 
@@ -116,7 +119,7 @@ namespace DAL
         /// </summary>
         public void Dispose()
         {
-            DbContext.Dispose();
+            DbContexts.Dispose();
         }
     }
 }

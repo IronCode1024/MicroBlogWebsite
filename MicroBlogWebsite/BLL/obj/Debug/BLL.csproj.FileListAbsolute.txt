@@ -9,3 +9,5 @@ F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\BLL
 F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
 F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\BLL\obj\Debug\BLL.dll
 F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\BLL\obj\Debug\BLL.pdb
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\BLL\bin\Debug\DTO.dll
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\BLL\bin\Debug\DTO.pdb

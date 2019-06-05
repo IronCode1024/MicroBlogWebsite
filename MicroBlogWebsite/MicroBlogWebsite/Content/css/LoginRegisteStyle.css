@@ -1,0 +1,123 @@
+﻿body {
+    
+    /*text-align:center;*/
+    margin:0px;
+    padding:0px;
+}
+
+.Panelmaster {
+    margin:0px auto;
+    height:800px;
+    width:100%;
+    /*border:1px solid red;*/
+}
+
+.navTop {
+    width:70%;
+    margin:0px auto;
+}
+.navTopleft {
+    float:right;
+    margin-right:100px;
+}
+
+/*下面的部分*/
+.Bottoms {
+    width:70%;
+    margin:0px auto;
+    padding-top:30px;
+}
+.panel {
+    margin-left:800px;
+    padding-top:60px;
+}
+.panel-success {
+    /*margin:0px auto;*/
+    /*border:1px solid red;*/
+    
+}
+    .panel-heading {
+        margin:0px auto;
+        width:400px;
+        height:50px;
+        border:2px solid #bdb4b4;
+        border-top:3px solid #ad3333;
+        /*border-top-color:red;*/
+        border-bottom:none;
+        border-radius:5px 5px 0px 0px;
+    }
+    .panel-body {
+        margin:0px auto;
+        width:400px;
+        height:450px;
+        border:2px solid #bdb4b4;
+        border-radius:0px 0px 5px 5px;
+        padding-top:30px;
+    }
+.form-group {
+    width:100%;
+    /*height:40px;*/
+    margin-bottom:20px;
+    margin-left:5%;
+    margin-right:20%;
+    align-content:center;
+}
+    .form-group label {
+        margin-right:10px;
+    }
+.form-control {
+    width:60%;
+    height:40px;
+    border-radius:5px;
+    font-size:18px;
+}
+.text-center {
+    text-align:center;
+}
+        /* 输入错误提示样式，名字是自动生成的 可在浏览器源代码中看到 */
+        .field-validation-error {
+            color:#fff;
+        }
+        .field-validation-valid {
+            display:none;
+        }
+        .input-validation-error{
+            border:1px solid #f00;
+            background-color:#fee;
+        }
+        .validation-summary-errors {
+            font-weight: bold;
+            color: #f00;
+        }
+        .validation-summary-valid {
+            display:none;
+        }
+
+.btn {
+    border-radius:5px;
+    cursor:pointer;
+    height:40px;
+    width:80px;
+}
+
+/*提示信息样式*/
+.form-Tips {
+    padding:0px;
+    margin-left:100px;
+    margin-top:-10px;
+    margin-bottom:10px;
+    height:10px;
+}
+
+
+
+
+.footer {
+    margin:0px auto;
+    text-align:center;
+}
+    .footer ul {
+        color:#808080;
+        margin-top:400px;
+        font-size:14px;
+    }

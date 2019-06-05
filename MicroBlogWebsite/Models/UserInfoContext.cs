@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,5 +35,30 @@ namespace Models
             //去掉级联删除操作
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
         }
+
+        public override int SaveChanges()
+        {
+            try
+            {
+                return base.SaveChanges();
+            }
+            catch (DbEntityValidationException exception)
+            {
+                var errorMessages =
+                    exception.EntityValidationErrors
+                        .SelectMany(validationResult => validationResult.ValidationErrors)
+                        .Select(m => m.ErrorMessage);
+
+                var fullErrorMessage = string.Join(", ", errorMessages);
+                //记录日志
+                //Log.Error(fullErrorMessage);
+                var exceptionMessage = string.Concat(exception.Message, " 验证异常消息是：", fullErrorMessage);
+
+                throw new DbEntityValidationException(exceptionMessage, exception.EntityValidationErrors);
+            }
+
+            //其他异常throw到上层
+        }
+
     }
 }

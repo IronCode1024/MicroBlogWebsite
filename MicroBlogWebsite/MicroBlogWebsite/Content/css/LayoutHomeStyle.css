@@ -16,14 +16,14 @@
 .navDivBox {
     width: 100%;
     height: 50px;
-    /*background-color:#caeaf8;*/
+    background-color:#ffffff;
 }
 
 .nav-site {
     width: 1300px;
     height: 50px;
     margin: 0px auto;
-    border: 1px solid red;
+    /*border: 1px solid red;*/
 }
 
 .nav-site-ul li {
@@ -33,7 +33,7 @@
 }
 
 .nav-site-ul-li1 {
-    margin-right: 800px;
+    margin-right: 640px;
 }
 /*上导航条字体样式*/
 .navli:hover {

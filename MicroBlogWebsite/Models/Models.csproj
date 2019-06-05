@@ -51,17 +51,29 @@
     <Compile Include="GoodFriend.cs" />
     <Compile Include="Grouping.cs" />
     <Compile Include="MicroBlog.cs" />
-    <Compile Include="Migrations\201905270720166_databaseDB.cs" />
-    <Compile Include="Migrations\201905270720166_databaseDB.Designer.cs">
-      <DependentUpon>201905270720166_databaseDB.cs</DependentUpon>
+    <Compile Include="Migrations\201906030848103_databaseDB1.cs" />
+    <Compile Include="Migrations\201906030848103_databaseDB1.Designer.cs">
+      <DependentUpon>201906030848103_databaseDB1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905270747173_databaseDB1.cs" />
-    <Compile Include="Migrations\201905270747173_databaseDB1.Designer.cs">
-      <DependentUpon>201905270747173_databaseDB1.cs</DependentUpon>
+    <Compile Include="Migrations\201906030900406_databaseDB2.cs" />
+    <Compile Include="Migrations\201906030900406_databaseDB2.Designer.cs">
+      <DependentUpon>201906030900406_databaseDB2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905270749403_databaseDB2.cs" />
-    <Compile Include="Migrations\201905270749403_databaseDB2.Designer.cs">
-      <DependentUpon>201905270749403_databaseDB2.cs</DependentUpon>
+    <Compile Include="Migrations\201906030901294_databaseDB21.cs" />
+    <Compile Include="Migrations\201906030901294_databaseDB21.Designer.cs">
+      <DependentUpon>201906030901294_databaseDB21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906030903010_databaseDB3.cs" />
+    <Compile Include="Migrations\201906030903010_databaseDB3.Designer.cs">
+      <DependentUpon>201906030903010_databaseDB3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906030904190_databaseDB4.cs" />
+    <Compile Include="Migrations\201906030904190_databaseDB4.Designer.cs">
+      <DependentUpon>201906030904190_databaseDB4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906030905138_databaseDB5.cs" />
+    <Compile Include="Migrations\201906030905138_databaseDB5.Designer.cs">
+      <DependentUpon>201906030905138_databaseDB5.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="UserInfo.cs" />
@@ -73,14 +85,23 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905270720166_databaseDB.resx">
-      <DependentUpon>201905270720166_databaseDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906030848103_databaseDB1.resx">
+      <DependentUpon>201906030848103_databaseDB1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905270747173_databaseDB1.resx">
-      <DependentUpon>201905270747173_databaseDB1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906030900406_databaseDB2.resx">
+      <DependentUpon>201906030900406_databaseDB2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905270749403_databaseDB2.resx">
-      <DependentUpon>201905270749403_databaseDB2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906030901294_databaseDB21.resx">
+      <DependentUpon>201906030901294_databaseDB21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906030903010_databaseDB3.resx">
+      <DependentUpon>201906030903010_databaseDB3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906030904190_databaseDB4.resx">
+      <DependentUpon>201906030904190_databaseDB4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906030905138_databaseDB5.resx">
+      <DependentUpon>201906030905138_databaseDB5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

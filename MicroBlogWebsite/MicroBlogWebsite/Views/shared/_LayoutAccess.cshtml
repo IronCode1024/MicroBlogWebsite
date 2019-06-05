@@ -13,15 +13,16 @@
     <div id="navDiv" class="navDivBox">
         <nav class="nav-site">
             <ul class="nav-site-ul">
-                <li class="nav-site-ul-li1">@Html.ActionLink("首页", "Default", "Access")</li>
+                <li class="">  <a href="/Access/Default" class="logo"><img src="~/Content/images/LayoutHome/talanglogo.png" /></a>  @*@Html.ActionLink("首页", "Default", "Access")*@</li>
+                <li class="nav-site-ul-li1">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.ActionLink("首页", "Default", "Access", new { @class="navfont" })</li>
                 
-                <li style="margin-left:300px;">@Html.ActionLink("登录", "Login", "Access")/@Html.ActionLink("注册", "Register", "Access")</li>
+                <li style="margin-left:300px;">@Html.ActionLink("登录", "Login", "Access", new { @class = "navfont" }) &nbsp;&nbsp;|&nbsp;&nbsp;@Html.ActionLink("注册", "Register", "Access", new { @class = "navfont" })</li>
             </ul>
         </nav>
     </div>
     
 
-    <div style="padding-top:215px;"></div>
+    @*<div style="padding-top:215px;"></div>*@
     <div>
         @RenderBody()
     </div>
@@ -55,7 +56,8 @@
             </div>
 
 
-            <div class="foot-copy">&copy;绝世倾城踏浪微博版权所有</div>
+            <div class="foot-copy">&copy;绝世倾城踏浪微博 &nbsp;talang.com版权所有&nbsp;鄂ICP备14531564号
+            </div>
         </div>
     </div>
 </body>

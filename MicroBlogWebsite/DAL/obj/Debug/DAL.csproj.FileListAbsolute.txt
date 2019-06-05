@@ -10,3 +10,5 @@ F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\DAL
 F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\DAL\bin\Debug\EntityFramework.SqlServer.xml
 F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\DAL\obj\Debug\DAL.dll
 F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\DAL\obj\Debug\DAL.pdb
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\DAL\bin\Debug\DTO.dll
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\DAL\bin\Debug\DTO.pdb

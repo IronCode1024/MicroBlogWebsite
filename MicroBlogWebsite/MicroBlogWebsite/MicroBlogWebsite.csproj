@@ -39,6 +39,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>G:\1704030723_刘剑峰\大三\使用jQueryEasyUI提升客户体验\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -79,7 +83,11 @@
   <ItemGroup>
     <Content Include="Content\css\LayoutAccessStyle.css" />
     <Content Include="Content\css\LayoutHomeStyle.css" />
+    <Content Include="Content\css\LoginRegisteStyle.css" />
+    <Content Include="Content\images\AccessImg\RegisterBg.jpg" />
+    <Content Include="Content\images\AccessImg\yuanhua1.jpg" />
     <Content Include="Content\images\LayoutHome\bg.jpg" />
+    <Content Include="Content\images\LayoutHome\talanglogo.png" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\EasyUI\jquery-1.11.0.min.js" />
@@ -467,6 +475,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Model\UserInfoLogin.cs" />
+    <Compile Include="Model\UserInfoRegister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -489,12 +499,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{62bb78da-cb72-4a66-8d32-16baefd21ad5}</Project>
       <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{cdf34fab-69a7-439d-b22d-3bee8b483486}</Project>
+      <Name>DTO</Name>
     </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{4f6a2f8c-03b9-49a3-a3f7-ca4d1160de8a}</Project>

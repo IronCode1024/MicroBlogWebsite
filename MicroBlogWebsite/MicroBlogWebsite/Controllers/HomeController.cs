@@ -18,14 +18,29 @@ namespace MicroBlogWebsite.Controllers
         /// <returns></returns>
         public ActionResult Index()//显示页面方法
         {
-            return View();
+            if (Session["User_Login"].ToString() !=null)//登录成功
+            {
+                return View();
+            }
+            else
+            {
+                return Redirect(Url.Action("Default", "Access"));
+            }
         }
 
-        [HttpPost]
-        public ActionResult Index(UserInfo ui)
-        {
-            return Redirect(Url.Action("Index"));
-        }
+        //[HttpPost]
+        //public ActionResult Index(UserInfo ui)
+        //{
+        //    if (Session["User_Login"].ToString() == "1")//登录成功
+        //    {
+        //        return Redirect(Url.Action("Index"));
+        //    }
+        //    else
+        //    {
+        //        return Redirect(Url.Action("Default", "Access"));
+        //    }
+            
+        //}
 
         /// <summary>
         /// 我的微博=>我的微博的基本信息=>编辑自己得微博（增删改查）（徐梦琴）
@@ -33,8 +48,17 @@ namespace MicroBlogWebsite.Controllers
         /// <returns></returns>
         public ActionResult Mymicrobolg()//显示页面方法
         {
-            return View();
+            if (Session["User_Login"].ToString() == "1")//登录成功
+            {
+                return View();
+            }
+            else
+            {
+                return Redirect(Url.Action("Default", "Access"));
+            }
+            
         }
+       
 
 
         /// <summary>
@@ -43,7 +67,14 @@ namespace MicroBlogWebsite.Controllers
         /// <returns></returns>
         public ActionResult Myfriendlist()//显示页面方法
         {
-            return View();
+            if (Session["User_Login"].ToString() == "1")//登录成功
+            {
+                return View();
+            }
+            else
+            {
+                return Redirect(Url.Action("Default", "Access"));
+            }
         }
 
         
@@ -53,7 +84,14 @@ namespace MicroBlogWebsite.Controllers
         /// <returns></returns>
         public ActionResult Personalcenter()//显示页面方法
         {
-            return View();
+            if (Session["User_Login"].ToString() == "1")//登录成功
+            {
+                return View();
+            }
+            else
+            {
+                return Redirect(Url.Action("Default", "Access"));
+            }
         }
 	}
 }

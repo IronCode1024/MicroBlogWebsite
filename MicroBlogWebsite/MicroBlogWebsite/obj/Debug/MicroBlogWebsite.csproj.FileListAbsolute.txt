@@ -22,3 +22,14 @@ F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\Mic
 F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\MicroBlogWebsite\obj\Debug\MicroBlogWebsite.dll
 F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\MicroBlogWebsite\obj\Debug\MicroBlogWebsite.pdb
 F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\MicroBlogWebsite\obj\Debug\MicroBlogWebsite.csprojResolveAssemblyReference.cache
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\MicroBlogWebsite\bin\BLL.dll
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\MicroBlogWebsite\bin\Models.dll
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\MicroBlogWebsite\bin\DAL.dll
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\MicroBlogWebsite\bin\EntityFramework.dll
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\MicroBlogWebsite\bin\BLL.pdb
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\MicroBlogWebsite\bin\Models.pdb
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\MicroBlogWebsite\bin\DAL.pdb
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\MicroBlogWebsite\bin\EntityFramework.xml
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\MicroBlogWebsite\bin\Newtonsoft.Json.dll
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\MicroBlogWebsite\bin\DTO.dll
+F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\MicroBlogWebsite\bin\DTO.pdb

@@ -14,13 +14,40 @@ namespace BLL
     public class UserInfoManager
     {
         //添加数据方法
-        public async Task AddUserInfo(string name, string email, string pwd, DateTime birthday, string region, string headPortrait, string autograph, bool states, DateTime registerTime)
+        //string name, string email, string pwd, DateTime birthday, string region, string headPortrait, string autograph, bool states, DateTime registerTime
+        public async Task AddUserInfo(string name, string email, string pwd)
         {
             //using 执行完之后立即销毁
-            using (var stuSvc = new DAL.UserInfoService())
+            //using (var uifSvc = new DAL.UserInfoService())
+            //{
+            var uifSvc = new DAL.UserInfoService();
+            await uifSvc.AddAsync(new Models.UserInfo { UserName = name, UserEmail = email, UserPassword = pwd });
+            //}
+        }
+
+
+        public int AddRegister(DTO.UserInfoDto UiDto)
+        {
+            using (var uifSvc = new DAL.UserInfoService())
             {
-                await stuSvc.AddAsync(new Models.UserInfo { UserName = name,UserEmail=email,UserPassword=pwd, UserBirthday = birthday, UserRegion = region, UserHeadPortrait = headPortrait,UserAutograph=autograph,States=states,RegisterTime=registerTime });
+                return uifSvc.AddRegister(UiDto);
             }
+
+        }
+
+        /// <summary>
+        /// 查询  登录方法
+        /// </summary>
+        /// <param name="uifo"></param>
+        /// <returns></returns>
+        public Models.UserInfo GetUserInfoWhere(Models.UserInfo uifo)
+        {
+            //using 执行完之后立即销毁
+            var uifSvc = new DAL.UserInfoService();
+            //return uifSvc.GetLogin(s =>(string.IsNullOrEmpty(s.UserEmail=email) &&  s.UserPassword == pwd));
+            var loginEntity = uifSvc.GetLogin(uifo);
+            return loginEntity;
+
         }
     }
 }

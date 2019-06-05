@@ -51,6 +51,10 @@
       <Project>{0cbd4f02-5313-46b5-818a-d7b80bbc7903}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{cdf34fab-69a7-439d-b22d-3bee8b483486}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{4f6a2f8c-03b9-49a3-a3f7-ca4d1160de8a}</Project>
       <Name>Models</Name>

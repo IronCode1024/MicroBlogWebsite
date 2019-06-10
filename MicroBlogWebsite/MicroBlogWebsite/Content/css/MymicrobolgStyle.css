@@ -1,0 +1,324 @@
+﻿* {
+    list-style: none;
+    text-decoration: none;
+    margin: 0px;
+    padding: 0px;
+    border-image: none;
+}
+
+
+/*左边主体部分*/
+#left {
+    float: left;
+    /*border: 1px solid red;*/
+    width: 400px;
+    position: absolute;
+}
+/*左边粉丝关注微博数量*/
+#leftinfor {
+    margin-top: 20px;
+    height: 85px;
+    background-color: #fff;
+    border-radius: 3px;
+}
+
+    #leftinfor ul {
+        /*border:1px solid black;*/
+        float: left;
+        width: 130px;
+        text-align: center;
+        margin-top: 15px;
+        border-right: 1px solid #8a8a8a;
+    }
+
+        #leftinfor ul li {
+            color: #8a8a8a;
+            line-height: 26px;
+        }
+
+            #leftinfor ul li a {
+                font-size: 20px;
+                color: black;
+            }
+
+                #leftinfor ul li a:hover {
+                    color: #ff6a00;
+                }
+
+/*左边个人标签*/
+#leftlabel {
+    margin-top: 20px;
+    height: 235px;
+    background-color: #fff;
+    border-radius: 3px;
+    position: relative;
+    padding: 0px 20px;
+    border: 1px solid #fff;
+}
+/*个人标签文字提示*/
+.leftwrite {
+    /*position:absolute;
+    top:10px;*/
+    margin-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(187, 225, 254, 0.72);
+}
+
+    .leftwrite p {
+        padding: 8px 10px;
+        font-size: 20px;
+        color: black;
+        background-color: rgba(187, 225, 254, 0.72);
+        width: 100px;
+        text-align: center;
+        border-radius: 10px;
+    }
+
+
+#leftlabeltext {
+    /*border:1px solid black;*/
+    height: 180px;
+    position: absolute;
+    left: 30px;
+    margin-top: 15px;
+}
+
+#leftlabel span {
+    margin-right: 30px;
+    margin-top: 30px;
+    font-size: 14px;
+    margin: 15px 5px;
+    line-height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(187, 225, 254, 0.72);
+    /*border: 1px solid black;*/
+}
+
+    #leftlabel span:hover {
+        font-size: 16px;
+    }
+
+    #leftlabel span a {
+        color: black;
+    }
+/*添加标签*/
+#leftadd {
+    position: absolute;
+    left: 40px;
+    top: 190px;
+    /*border:1px solid black;*/
+}
+
+    #leftadd .addtext {
+        height: 30px;
+        width: 210px;
+        border: 1px solid #91e7f3;
+        border-radius: 10px;
+    }
+
+    #leftadd .addbtn {
+        height: 32px;
+        width: 90px;
+        background-color: rgba(187, 225, 254, 0.72);
+        border: 1px solid #91e7f3;
+        margin-left: 5px;
+        border-radius: 10px;
+    }
+
+/*左边最近关注*/
+#leftLately {
+    margin-top: 20px;
+    height: 270px;
+    background-color: #fff;
+    padding: 0px 20px;
+    border-radius: 3px;
+    position: relative;
+    padding-top: 3px;
+}
+
+    #leftLately ul {
+        margin-left: 10px;
+    }
+
+        #leftLately ul li {
+            margin: 10px 15px;
+            float: left;
+            width: 80px;
+            height: 80px;
+            border-radius: 80px;
+            border: 1px solid #91e7f3;
+        }
+
+/*中间主体微博部分*/
+#mindd {
+    float: right;
+    /*border: 1px solid pink;*/
+    margin-left: 30px;
+    width: 870px;
+}
+
+/*中间导航栏*/
+#minddbar {
+    margin-top: 20px;
+    background-color: #fff;
+    height: 50px;
+    border-radius: 3px;
+    position: relative;
+    background-color: #f2f2f2;
+}
+
+    #minddbar ul li {
+        float: left;
+        padding: 0px 40px;
+        line-height: 50px;
+    }
+
+        #minddbar ul li a {
+            color: black;
+            font-size: 18px;
+        }
+
+        #minddbar ul li:hover {
+            border-bottom: 2px solid #ff6a00;
+            background-color: #fff;
+        }
+
+/*中间导航栏和二级菜单*/
+ul li.xiala ul {
+    display: none;
+    width: 120px;
+    background-color: #fff;
+    border: 1px solid #8a8a8a;
+    overflow: hidden;
+    position: absolute;
+    left: 230px;
+    z-index: 999999;
+}
+
+    ul li.xiala ul li {
+        width: 120px;
+        background-color: #fff;
+    }
+
+    ul li.xiala ul li {
+        line-height: 20px;
+    }
+
+        ul li.xiala ul li:hover {
+            border: none;
+            background-color: #efefef;
+        }
+
+
+/*二级菜单*/
+
+ul li.xiala:hover #twobar {
+    display: block;
+}
+
+.mindsearch {
+    margin-left: 180px;
+    /*line-height:130px;*/
+    /*border:1px solid black;*/
+    margin-top: 0px;
+}
+
+#mindtxt {
+    width: 180px;
+    height: 28px;
+    border-radius: 10px;
+}
+
+#mindbtn {
+    border: 1px solid black;
+    height: 30px;
+    width: 70px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+/*我的微博*/
+.mindmicroblog {
+    width: 870px;
+    /*height: 300px;*/
+    /*border:1px solid black;*/
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+    position: relative;
+}
+/*我的微博中 个人头像*/
+.microblogtop {
+    width: 830px;
+    /*height: 50px;*/
+    padding: 10px 20px;
+    /*border: 1px solid black;*/
+    overflow: hidden;
+}
+
+/*头像*/
+.tophadnimg {
+    float: left;
+    width: 80px;
+    height: 80px;
+}
+
+    .tophadnimg img {
+        width: 80px;
+        height: 80px;
+        border-radius: 80px;
+    }
+/*发布人发布时间*/
+.topinfor ul {
+    float: left;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+    .topinfor ul li {
+        line-height: 28px;
+    }
+
+.topname {
+    font-size: 20px;
+}
+
+/*第二个二级菜单的点击*/
+.del {
+    float: right;
+    margin-top: 10px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+}
+/*删除收藏编辑  第二个二级菜单*/
+.twoinfor {
+    width: 120px;
+    background-color: #fff;
+    border: 1px solid black;
+    display: none;
+    /*display:block;*/
+    position: absolute;
+    left: 725px;
+    top: 50px;
+}
+
+    .twoinfor ul {
+    }
+
+        .twoinfor ul li {
+            line-height: 40px;
+            text-align: center;
+        }
+
+.microblogmid {
+    height: 100px;
+    width: 810px;
+    border: 1px solid black;
+    margin: 20px 30px;
+
+}
+
+body {
+}

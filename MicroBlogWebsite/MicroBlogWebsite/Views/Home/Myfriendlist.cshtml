@@ -1,16 +1,176 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Myfriendlist";
     Layout = "~/Views/shared/_LayoutHome.cshtml";
 }
 @section Head{    @*head文件*@
+<link href="~/Content/css/MyfriendlistStyle.css" rel="stylesheet" />
 <script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/EasyUI/jquery-1.11.0.min.js"></script>
+<script src="~/Scripts/EasyUI/jquery.easyui.min.js"></script>
+<script src="~/Scripts/EasyUI/locale/easyui-lang-zh_CN.js"></script>
+<link href="~/Scripts/EasyUI/themes/metro/easyui.css" rel="stylesheet" />
+<link href="~/Scripts/EasyUI/themes/icon.css" rel="stylesheet" />
 <script type="text/javascript">
-    //$(function () {
-    //    alert("hello jquery");
-    //});
+
+    window.onload = function () {
+        var aLi = document.getElementById("nav").getElementsByTagName("li");
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].onmouseover = function () {
+                this.children[1].style.display = 'block';//选取当前li元素的第二个子元素
+            }
+            aLi[i].onmouseout = function () {
+                this.children[1].style.display = 'none';
+            }
+        }
+    }
+    $(function () {
+        $('#btn').click(function () {
+            var name = prompt("请输入新分组的名称", "");
+            document.getElementById("aaa").innerHTML += "<li class=\"newLi\">" + name + "</li>";
+        })
+        $('#btns').click(function () {
+            var aa = "@ViewBag.aa";
+            alert(aa);
+        });
+        $('#btnq').click(function () {
+            alert('取消关注');
+        });
+    })
+    window.onscroll = function () {
+        var t = document.documentElement.scrollTop || document.body.scrollTop;
+        
+        var fi = document.getElementById("left");
+        if (t >= 530) {
+            //alert(t);
+            fi.style.position = "absolute";
+            
+            //fi.style.left = "733px";
+            fi.style.top = t+ "px";
+
+            
+
+        }
+        else {
+            fi.style.position = "absolute";
+            //fi.style.left = "735x";
+            fi.style.top = "533px";
+        }
+
+    }
 </script>
 }
 
-<h2>Myfriendlist</h2>
+<div id="MyBody" class="" style="width: 1300px; margin: 0px auto;">
+    <div style="height: auto;">
 
+        <div id="left">
+            <div id="leftlabel">
+                <div class="guanzhu" style="height: 30px; width: 400px; margin-left: -22px;">
+                    <ul>
+                        <li style="background-color: #F2F2F5; padding-left: 40px; border-bottom: 1px solid #F2F2F5">
+                            <a href="#">
+                                <img src="~/Content/images/UserImg/myfriendlist/2019-06-04_134057.png" />关注100
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="nav">
+                    <ul>
+                        <li>
+                            <a href="#">已分组</a>
+                            <div>
+                                <a href="#">明星</a>
+                                <a href="#">游戏</a>
+                                <a href="#">美食</a>
+                                <a href="#" id="aaa"></a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#">未分组</a>
+                            <div>
+                                <a href="#">33人</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div style="margin-left: 30px; border: 1px solid #b2acac; width: 85px; border-radius: 5px; height: 29px;">
+                    <img src="~/Content/images/UserImg/myfriendlist/2019-06-05_103428.png" />
+                    <input type="button" value="添加分组" id="btn" style="width: 70px; height: 29px; margin-left: -10px; margin-top: 0px; border-radius: 5px; background-color: white; border: none;" />
+                </div>
+                <div class="fensi" style="height: 30px; width: 400px; margin-left: -22px; margin-top: 10px;">
+                    <ul style="height: 30px;">
+                        <li style="margin-left: 40px;">
+                            <a href="#">
+                                <img src="~/Content/images/UserImg/myfriendlist/2019-06-04_134452.png" />粉丝100
+                            </a>
+                            </li>
+                    </ul>
+                </div>
+                <div class="heimingdan" style="height: 30px; width: 400px; margin-left: -22px;">
+                    <ul style="height: 30px">
+                        <li style="margin-left: 40px">
+                            <a href="#">
+                                <img src="~/Content/images/UserImg/myfriendlist/2019-06-04_134511.png" />黑名单100
+                            </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="mindd">
+            <div id="minddbar">
+                <div class="lineh" style="height: 50px; border-bottom: 1px solid #d9cfcf;">
+                    <ul>
+                        <li><a href="#">全部关注453</a></闪电>
+                    </ul>
+                    <input type="text" class="txts" placeholder="请输入所查询的内容" /><input type="button" value="搜索" class="btns" />
+                </div>
+            </div>
+            <div class="rightthree" style="margin-top: -630px; width: 100%;">
+                <div style="margin: 0px auto; width: 800px;">
+                    @for (int i = 0; i <= 5; i++)
+                    {
+                        if (i % 2 == 0)
+                        {
+                            <br />
+                            <br />
+                            <br />
+                        }
+                        else
+                        {
+
+                        }
+
+                        <div class="list" style="display: inline-table;">
+                            <div class="headimg">
+                            </div>
+                            <div class="line1"></div>
+                            <div class="mine">
+                                <ul style="margin-left: 20px; line-height: 24px;">
+                                    <li style="font-size: 15px; font-weight: 400;">
+                                        用户名
+                                        @ViewBag.aa
+                                    </li>
+                                    <li style="font-size: 13px; color: #808080;">已关注</li>
+                                    <li style="font-size: 13px; color: #808080;">个性签名</li>
+                                    <li>
+                                        <input type="button" value="设置备注" id="btns" style="border-radius: 5px; border: 1px solid #D9D9D9; background-color: white" />
+                                        <input type="button" value="取消关注" id="btnq" style="margin-left: 10px; border-radius: 5px; border: 1px solid #D9D9D9; background-color: white" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>

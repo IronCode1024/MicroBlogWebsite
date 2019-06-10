@@ -10,6 +10,10 @@ namespace MicroBlogWebsite.Controllers
 {
     public class HomeController : Controller
     {
+        public HomeController()
+        {
+            
+        }
         //
         // GET: /Home/
         /// <summary>
@@ -18,7 +22,7 @@ namespace MicroBlogWebsite.Controllers
         /// <returns></returns>
         public ActionResult Index()//显示页面方法
         {
-            if (Session["User_Login"].ToString() !=null)//登录成功
+            if (Session["User_Login"] != null)//登录成功
             {
                 return View();
             }
@@ -39,7 +43,7 @@ namespace MicroBlogWebsite.Controllers
         //    {
         //        return Redirect(Url.Action("Default", "Access"));
         //    }
-            
+
         //}
 
         /// <summary>
@@ -48,7 +52,7 @@ namespace MicroBlogWebsite.Controllers
         /// <returns></returns>
         public ActionResult Mymicrobolg()//显示页面方法
         {
-            if (Session["User_Login"].ToString() == "1")//登录成功
+            if (Session["User_Login"] != null)//登录成功
             {
                 return View();
             }
@@ -56,9 +60,9 @@ namespace MicroBlogWebsite.Controllers
             {
                 return Redirect(Url.Action("Default", "Access"));
             }
-            
+
         }
-       
+
 
 
         /// <summary>
@@ -67,7 +71,7 @@ namespace MicroBlogWebsite.Controllers
         /// <returns></returns>
         public ActionResult Myfriendlist()//显示页面方法
         {
-            if (Session["User_Login"].ToString() == "1")//登录成功
+            if (Session["User_Login"] != null)//登录成功
             {
                 return View();
             }
@@ -77,14 +81,14 @@ namespace MicroBlogWebsite.Controllers
             }
         }
 
-        
+
         /// <summary>
         /// 个人中心，个人信息=>用户的个人自己的信息，自定义信息。（杨洲）
         /// </summary>
         /// <returns></returns>
         public ActionResult Personalcenter()//显示页面方法
         {
-            if (Session["User_Login"].ToString() == "1")//登录成功
+            if (Session["User_Login"] != null)//登录成功
             {
                 return View();
             }
@@ -93,5 +97,5 @@ namespace MicroBlogWebsite.Controllers
                 return Redirect(Url.Action("Default", "Access"));
             }
         }
-	}
+    }
 }

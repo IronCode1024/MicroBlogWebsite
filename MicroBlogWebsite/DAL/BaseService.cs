@@ -10,8 +10,9 @@ namespace DAL
 {
     /// <summary>
     /// 基础数据操作类服务(增删改查基类)
+    /// : IDisposable
     /// </summary>
-    public class BaseService<T> : IDisposable where T : Models.BaseEntity, new()// new T();添加new()约束
+    public class BaseService<T> where T : Models.BaseEntity, new()// new T();添加new()约束
     {
         //public Model.StudentContext DbContext { get; set; } = new Model.StudentContext();
         /// <summary>
@@ -117,9 +118,9 @@ namespace DAL
         /// <summary>
         /// 实现接口
         /// </summary>
-        public void Dispose()
-        {
-            DbContexts.Dispose();
-        }
+        //public void Dispose()
+        //{
+        //    DbContexts.Dispose();
+        //}
     }
 }

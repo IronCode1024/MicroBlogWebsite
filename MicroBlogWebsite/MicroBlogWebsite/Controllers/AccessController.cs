@@ -15,6 +15,8 @@ namespace MicroBlogWebsite.Controllers
         /// UimBll 用户管理BLL类
         /// </summary>
         private BLL.UserInfoManager UimBll = new BLL.UserInfoManager();
+        private BLL.MicroBlogManager MbmBll= new BLL.MicroBlogManager();
+
         //
         // GET: /Access/
 
@@ -24,14 +26,43 @@ namespace MicroBlogWebsite.Controllers
         /// <returns></returns>
         public ActionResult Default()
         {
+            //用户头像  九宫格
+            IEnumerable<Models.UserInfo> listUserHeadPortrait = UimBll.GetUserHeadPortrait();
+            ViewBag.listUserHeadPortrait = listUserHeadPortrait;
+
+            //微博新鲜事儿
+            IEnumerable<Models.MicroBlog> listNewThings = MbmBll.GetNewThings();
+            ViewBag.listNewThings = listNewThings;
+
+            //微博精选文章
+            IEnumerable<Models.MicroBlog> listNivo = MbmBll.GetNivo();
+            ViewBag.listNivo = listNivo;
+
+            //微博内容     预览
+            IEnumerable<DTO.MicroBlogAndUserInfDto> listPreviewBlog = UimBll.GetPreviewBlog();
+            ViewBag.listPreviewBlog = listPreviewBlog;
+
+            //热门微博用户排名   根据粉丝数量排序
+            IEnumerable<Models.UserInfo> listPopularUser = UimBll.GetPopularUser();
+            ViewBag.listPopularUser = listPopularUser;
+
             return View();
+        }
+
+        /// <summary>
+        /// 退出登录
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult OutLogin()
+        {
+            Session["User_Login"] = null;//清空session
+            return Redirect(Url.Action("Default", "Access"));
         }
 
 
         [HttpGet]
         public ActionResult Login()//登录
         {
-            Session["User_Login"] = null;
             return View();
         }
 
@@ -59,7 +90,8 @@ namespace MicroBlogWebsite.Controllers
                 }
                 else
                 {
-                    Session["User_Login"] = "1";
+                    Session["User_Login"] = "1";//登录成功，给session赋值
+                    //Session.Timeout = 1;
                     return Redirect(Url.Action("Index", "Home"));
                 }
 

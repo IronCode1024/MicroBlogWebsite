@@ -6,7 +6,8 @@
 }
 
 #LayoutHomeHtml {
-    background-image: url("/Content/images/LayoutHome/bg.jpg");
+    /*background-image: url("/Content/images/LayoutHome/Masterbg.jpg");*/
+    background-color:#6493e9;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     /*background-color:yellow;*/
@@ -41,7 +42,7 @@
 }
 
 /*下导航栏*/
-#navUserDiv {
+/*#navUserDiv {
     padding-top: 150px;
     width: 100%;
     height: 50px;
@@ -52,10 +53,10 @@
     width: 1300px;
     height: 50px;
     margin: 0px auto;
-    /*border:1px solid #00ff90;*/
-}
+    /*border:1px solid #00ff90;
+}*/
 
-.nav-siteuser-ul {
+/*.nav-siteuser-ul {
     opacity: 0.8;
     background-color: #7bc5db;
     float: right;
@@ -66,9 +67,9 @@
         float: left;
         line-height: 50px;
         margin-left: 50px;
-    }
+    }*/
 /*下导航栏字体样式*/
-.navUserli {
+/*.navUserli {
     font-size: 25px;
     color: #edecec;
 }
@@ -76,7 +77,105 @@
     .navUserli:hover {
         font-size:25px;
         color: #ffffff;
+    }*/
+
+/*新式下导航栏*/
+#handbgi {
+    margin: 0 auto;
+    width: 1300px;
+    height: 400px;
+    background-image: url("/content/images/UserImg/mymicrobolg/handimg.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border-top: 1px solid rgba(255, 255, 255, 0.00);
+}
+
+.handimg {
+    margin: 0px auto;
+    /*border: 1px solid black;*/
+    border-radius: 140px;
+    width: 140px;
+    height: 140px;
+    margin-top: 50px;
+    position: relative;
+}
+
+#imgTip {
+    width: 370px;
+    height: 370px;
+    display: none;
+    /*display:block;*/
+    position: absolute;
+    left: 150px;
+    top: -30px;
+    /*border:1px solid black;*/
+}
+
+#handimgmax {
+    border-radius: 140px;
+    width: 140px;
+    height: 140px;
+}
+
+#mindd {
+    /*border: 1px solid black;*/
+    width: 1300px;
+    height: 700px;
+}
+
+#handnr {
+    margin: 0 auto;
+    /*border: 1px solid black;*/
+    width: 100%;
+}
+
+.username, .userremark {
+    /*border: 1px solid black;*/
+    margin: 0px auto;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    line-height: 30px;
+}
+
+.username {
+    font-size: 28px;
+    margin-top: 20px;
+}
+
+#Navigation {
+    width: 1300px;
+    background-color: #fff;
+    height: 62px;
+    margin:0px auto;
+}
+
+    #Navigation ul {
+        margin-left: -50px;
     }
+
+        #Navigation ul li {
+            float: left;
+            font-size: 20px;
+            line-height: 40px;
+            margin-left: 200px;
+            height: 40px;
+            /*border:1px solid black;*/
+            padding: 10px;
+        }
+
+            #Navigation ul li a {
+                color: black;
+            }
+
+            #Navigation ul li:hover {
+                border-bottom: 2px solid #ff6a00;
+            }
+
+            #Navigation ul li hover a {
+                color: #ff6a00;
+            }
+
 
 
 /*页脚*/

@@ -10,8 +10,4 @@ F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\Mod
 F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\Models\obj\Debug\Models.Migrations.databaseDB1.resources
 F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\Models\obj\Debug\Models.csproj.GenerateResource.Cache
 F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\Models\obj\Debug\Models.Migrations.databaseDB2.resources
-F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\Models\obj\Debug\Models.Migrations.databaseDB21.resources
-F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\Models\obj\Debug\Models.Migrations.databaseDB3.resources
-F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\Models\obj\Debug\Models.Migrations.databaseDB4.resources
-F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\Models\obj\Debug\Models.Migrations.databaseDB5.resources
 F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache

@@ -15,22 +15,22 @@ namespace Models
 
 
         public int MyUserID { get; set; }//MyUserID  外键（UserInfo） 我的UserID
-        //[ForeignKey("MyUserID")]
-        //public virtual UserInfo GoodFriendMyUserID { get; set; }
+        [ForeignKey("MyUserID")]
+        public virtual UserInfo GoodFriendMyUserID { get; set; }
 
 
 
         
         public int? FollowUserID { get; set; }//FollowUserID   UserID  外键（UserInfo）    我关注的好友UserID
-        //[ForeignKey("FollowUserID")]
-        //public virtual UserInfo GoodFriendFollowUserID { get; set; }
+        [ForeignKey("FollowUserID")]
+        public virtual UserInfo GoodFriendFollowUserID { get; set; }
 
 
 
 
         public int? FansUserID { get; set; }//FansUserID    UserID  外键（UserInfo）  我的粉丝UserID  
-        //[ForeignKey("FansUserID")]
-        //public virtual UserInfo GoodFriendFansUserID { get; set; }
+        [ForeignKey("FansUserID")]
+        public virtual UserInfo GoodFriendFansUserID { get; set; }
 
 
         //public DateTime Establish { get; set; }//建立关系的时间

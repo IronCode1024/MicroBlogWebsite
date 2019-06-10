@@ -28,10 +28,10 @@ namespace BLL
 
         public int AddRegister(DTO.UserInfoDto UiDto)
         {
-            using (var uifSvc = new DAL.UserInfoService())
-            {
-                return uifSvc.AddRegister(UiDto);
-            }
+            var uifSvc = new DAL.UserInfoService();
+
+            return uifSvc.AddRegister(UiDto);
+
 
         }
 
@@ -48,6 +48,50 @@ namespace BLL
             var loginEntity = uifSvc.GetLogin(uifo);
             return loginEntity;
 
+        }
+
+
+
+
+        /// <summary>
+        /// 按最近时间获取用户头像    新加入用户
+        /// </summary>
+        /// <param name="Uidto"></param>
+        /// <returns></returns>
+        public IEnumerable<Models.UserInfo> GetUserHeadPortrait()
+        {
+            var uifSvc = new DAL.UserInfoService();
+            var HeadPortraitEntity = uifSvc.GetUserHeadPortrait();
+            return HeadPortraitEntity;
+
+        }
+
+
+
+       
+
+
+        /// <summary>
+        /// 微博文章  预览
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<DTO.MicroBlogAndUserInfDto> GetPreviewBlog()
+        {
+            var uifSvc = new DAL.UserInfoService();
+            var PreviewBlogEntity = uifSvc.GetPreviewBlog();
+            return PreviewBlogEntity;
+        }
+
+
+        /// <summary>
+        /// 热门微博用户排名
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Models.UserInfo> GetPopularUser()
+        {
+            var uifSvc = new DAL.UserInfoService();
+            var PopularUserEntity = uifSvc.GetPopularUser();
+            return PopularUserEntity;
         }
     }
 }

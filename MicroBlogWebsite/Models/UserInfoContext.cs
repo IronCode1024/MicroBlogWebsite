@@ -38,6 +38,7 @@ namespace Models
 
         public override int SaveChanges()
         {
+            //EF错误处理
             try
             {
                 return base.SaveChanges();

@@ -11,13 +11,18 @@ namespace Models
     [Table("Tana_MicroBlog")]
     public class MicroBlog:BaseEntity
     {
+
+        public MicroBlog()
+        {
+            this.TimeDifference = CreateTime;
+        }
         //public int Id { get; set; }//MicroBlogID
 
 
         
         public int UserID { get; set; }//UserID  外键（UserInfo）
-        //[ForeignKey("")]
-        //public virtual UserInfo MicroBlogUserID { get; set; }
+        [ForeignKey("")]
+        public virtual UserInfo MicroBlogUserID { get; set; }
 
 
         
@@ -34,6 +39,13 @@ namespace Models
 
 
         //public DateTime ReleaseTime { get; set; }//发布时间
+
+
+        [NotMapped]
+        /// <summary>
+        /// 时间差
+        /// </summary>
+        public DateTime TimeDifference { get; set; }
 
     }
 }

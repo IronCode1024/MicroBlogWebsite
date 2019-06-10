@@ -81,13 +81,54 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\DefaultStyle.css" />
     <Content Include="Content\css\LayoutAccessStyle.css" />
     <Content Include="Content\css\LayoutHomeStyle.css" />
     <Content Include="Content\css\LoginRegisteStyle.css" />
+    <Content Include="Content\css\MyfriendlistStyle.css" />
+    <Content Include="Content\css\MymicrobolgStyle.css" />
+    <Content Include="Content\images\AccessImg\DefaultImg\LunboImg\005tX86ply1fwsv3wkpzzj313p13e7d1.jpg" />
+    <Content Include="Content\images\AccessImg\DefaultImg\LunboImg\580ead85ly1fyebtgyh5zj219u0dytew.jpg" />
+    <Content Include="Content\images\AccessImg\DefaultImg\LunboImg\90eb2137ly1flzc6k2gixj20pn0ep7cd.jpg" />
+    <Content Include="Content\images\AccessImg\DefaultImg\LunboImg\90eb2137ly1fm86typshvj20jr0dq76g.jpg" />
     <Content Include="Content\images\AccessImg\RegisterBg.jpg" />
     <Content Include="Content\images\AccessImg\yuanhua1.jpg" />
+    <Content Include="Content\images\AdvertisementImg\heidong1.png" />
     <Content Include="Content\images\LayoutHome\bg.jpg" />
+    <Content Include="Content\images\LayoutHome\dianzan.PNG" />
+    <Content Include="Content\images\UserImg\HeadPortrait\11.jpg" />
+    <Content Include="Content\images\LayoutHome\pinglun.PNG" />
     <Content Include="Content\images\LayoutHome\talanglogo.png" />
+    <Content Include="Content\images\LayoutHome\zhuanfa.PNG" />
+    <Content Include="Content\images\UserImg\myfriendlist\12e7099abca738f88e2a3090807b4b3b[1].jpg" />
+    <Content Include="Content\images\UserImg\myfriendlist\2019-06-04_134057.png" />
+    <Content Include="Content\images\UserImg\myfriendlist\2019-06-04_134452.png" />
+    <Content Include="Content\images\UserImg\myfriendlist\2019-06-04_134511.png" />
+    <Content Include="Content\images\UserImg\myfriendlist\2019-06-05_103428.png" />
+    <Content Include="Content\images\UserImg\HeadPortrait\1.jpg" />
+    <Content Include="Content\images\UserImg\HeadPortrait\2.jpg" />
+    <Content Include="Content\images\UserImg\HeadPortrait\3.jpg" />
+    <Content Include="Content\images\UserImg\HeadPortrait\4.jpg" />
+    <Content Include="Content\images\UserImg\HeadPortrait\5.jpg" />
+    <Content Include="Content\images\UserImg\HeadPortrait\6.jpg" />
+    <Content Include="Content\images\UserImg\HeadPortrait\9.jpg" />
+    <Content Include="Content\images\UserImg\HeadPortrait\8.jpg" />
+    <Content Include="Content\images\UserImg\HeadPortrait\10.jpg" />
+    <Content Include="Content\images\UserImg\HeadPortrait\7.jpg" />
+    <Content Include="Content\images\UserImg\Mymicrobolg\handimg.jpg" />
+    <Content Include="Content\images\UserImg\Mymicrobolg\handimgmax.jpg" />
+    <Content Include="Content\images\UserImg\UserMicroBlogImg\1.jpg" />
+    <Content Include="Content\images\UserImg\UserMicroBlogImg\10.jpg" />
+    <Content Include="Content\images\UserImg\UserMicroBlogImg\11.jpg" />
+    <Content Include="Content\images\UserImg\UserMicroBlogImg\12.jpg" />
+    <Content Include="Content\images\UserImg\UserMicroBlogImg\2.jpg" />
+    <Content Include="Content\images\UserImg\UserMicroBlogImg\3.jpg" />
+    <Content Include="Content\images\UserImg\UserMicroBlogImg\4.jpg" />
+    <Content Include="Content\images\UserImg\UserMicroBlogImg\5.jpg" />
+    <Content Include="Content\images\UserImg\UserMicroBlogImg\6.jpg" />
+    <Content Include="Content\images\UserImg\UserMicroBlogImg\7.jpg" />
+    <Content Include="Content\images\UserImg\UserMicroBlogImg\8.jpg" />
+    <Content Include="Content\images\UserImg\UserMicroBlogImg\9.jpg" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\EasyUI\jquery-1.11.0.min.js" />
@@ -499,6 +540,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\images\UserImg\UserBgImg\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

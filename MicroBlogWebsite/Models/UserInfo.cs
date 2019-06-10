@@ -34,6 +34,9 @@ namespace Models
 
         [StringLength(4)]
         public string UserSex { get; set; }
+
+        [DefaultValue(0)]
+        public int UserFansNum { get; set; }//粉丝数量
         
         //[Required(AllowEmptyStrings=true)]//允许为空
         public DateTime? UserBirthday { get; set; }//生日
@@ -56,20 +59,20 @@ namespace Models
 
 
 
-        ////外键    微博文章表  关联UserInfo  Id   UserID
-        //[InverseProperty("MicroBlogUserID")]
-        //public virtual ICollection<MicroBlog> MicroBlogUserID { get; set; }
+        //外键    微博文章表  关联UserInfo  Id   UserID
+        [InverseProperty("MicroBlogUserID")]
+        public virtual ICollection<MicroBlog> MicroBlogUserID { get; set; }
 
-        
 
-        ////外鍵  好友表   关联UserInfo   Id
-        //[InverseProperty("GoodFriendMyUserID")]
-        //public virtual ICollection<GoodFriend> GoodFriendMyUserID { get; set; }
 
-        //[InverseProperty("GoodFriendFollowUserID")]
-        //public virtual ICollection<GoodFriend> GoodFriendFollowUserID { get; set; }
+        //外鍵  好友表   关联UserInfo   Id
+        [InverseProperty("GoodFriendMyUserID")]
+        public virtual ICollection<GoodFriend> GoodFriendMyUserID { get; set; }
 
-        //[InverseProperty("GoodFriendFansUserID")]
-        //public virtual ICollection<GoodFriend> GoodFriendFansUserID { get; set; }
+        [InverseProperty("GoodFriendFollowUserID")]
+        public virtual ICollection<GoodFriend> GoodFriendFollowUserID { get; set; }
+
+        [InverseProperty("GoodFriendFansUserID")]
+        public virtual ICollection<GoodFriend> GoodFriendFansUserID { get; set; }
     }
 }

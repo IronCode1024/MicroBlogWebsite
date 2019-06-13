@@ -76,7 +76,7 @@
                                 break;
                             }
                             num++;
-                            <a href=javascript:alert(@item.Id)>
+                            <a href="/Access/Login"><!--javascript:alert(@item.Id)-->
                                 <div class="newUserSp">
                                     <img src="@item.UserHeadPortrait" />
                                 </div>
@@ -118,7 +118,7 @@
                         }
 
                         <div class="nivoSon">
-                            <a href=javascript:alert(@item.UserID)>
+                            <a href="/Access/Login"><!--javascript:alert(@item.UserID)-->
                                 <div class="nivoSp">
                                     <div class="nivoLeftImg"><img src="@item.Content_img" /></div>
                                     <div class="nivoRight">
@@ -174,7 +174,7 @@
                         <div class="mbArticleBox">
                             <div class="mbArticleBoxSon">
                                 <div class="mbArticleLeft">
-                                    <div style="margin-top:10px;"><p style="color:#808080;font-size:18px;">@item.Title</p></div>
+                                    <div style="margin-top:10px;"><a class="titleCenter" href="/Access/Login"><p style="font-size:18px;">@item.Title</p></a></div>
                                     <div style="margin-top: 20px;font-size:15px;">
                                         @{
                         string str = "";//此变量存储最终要显示的标题
@@ -197,16 +197,21 @@
                                             <span class="UserNameSpan">@item.UserName &nbsp;&nbsp;&nbsp; @item.CreateTime.Year 年 @item.CreateTime.Month 月 @item.CreateTime.Day 日</span>
                                         </div>
 
+                                        <!--点赞评论转发-->
                                         <div class="zfpldz">
-                                            <span class="zf"><span style="margin-left:20px;">36592</span></span>
-                                            <span class="pl"><span style="margin-left:20px;">2354</span></span>
-                                            <span class="dz"><span style="margin-left:20px;">@item.Points_number</span></span>
+                                            <a href="/Access/Login"><span class="zf"><span style="margin-left:20px;">36592</span></span></a>
+                                            <a href="/Access/Login">
+                                                <span class="pl"><span style="margin-left:20px;">2354</span></span>
+                                            </a>
+                                            <a href="/Access/Login"><span class="dz"><span style="margin-left:20px;">@item.Points_number</span></span></a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="mbArticleRight">
-                                    <img class="mbArticleRightImg" src="@item.Content_img" />
-                                </div>
+                                <a href="/Access/Login">
+                                    <div class="mbArticleRight">
+                                        <img class="mbArticleRightImg" src="@item.Content_img" />
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     }
@@ -244,7 +249,7 @@
                         string nn = numtime.TotalMinutes.ToString("F0");
 
                         <div class="NewThingsSon">
-                            <a href=javascript:alert(@item.UserID)>
+                            <a href="/Access/Login"> <!--javascript:alert(@item.UserID)-->
                                 <div class="NewThingsSp">
                                     <div class="NewThingsleft">
                                         <div style="font-size:16px;margin-top:10px;height:50px;">@NewThingStr</div>
@@ -268,24 +273,24 @@
                             int PopularUserNum = 1;
                             foreach (Models.UserInfo item in ViewBag.listPopularUser)
                             {
-                                if (PopularUserNum==11)
+                                if (PopularUserNum == 11)
                                 {
                                     break;
                                 }
-                        <li>
-                            <a href=javascript:alert(@item.Id)>
+                                <li>
+                                    <a href="/Access/Login"> <!--javascript:alert(@item.Id)-->
 
-                                @if (PopularUserNum <= 3)
+                                        @if (PopularUserNum <= 3)
                                         {
-                                        <b style="font-size:25px;color:red;">@PopularUserNum：@item.UserName</b>
+                                            <b style="font-size:25px;">@PopularUserNum：@item.UserName</b>
                                         }
                                         else
                                         {
-                                        <span style="font-size:20px;">@PopularUserNum：@item.UserName</span>
+                                            <span style="font-size:20px;">@PopularUserNum：@item.UserName</span>
                                         }
-                                <span style="color:#808080;">粉丝数：@item.UserFansNum</span>
-                            </a>
-                        </li>
+                                        <span style="color:#808080;">粉丝数：@item.UserFansNum</span>
+                                    </a>
+                                </li>
 
                                         PopularUserNum++;
                             }
@@ -305,7 +310,7 @@
                         <br />
                         <div class="AdvertisementSon">
                             <p style="font-size: 15px; color: black;"><a href="#">科学未来</a><span>的热门文章</span></p>
-                            <div class="AdvertisementLeft">                                
+                            <div class="AdvertisementLeft">
                                 <a class="tu1" href="#">
                                     <img src="/Content/images/AdvertisementImg/heidong1.png" />
                                 </a>
@@ -322,7 +327,7 @@
                                 </ul>
                                 <div class="clear"></div>
                             </div>
-                            
+
                         </div>
                     }
                     <div id="More" class="SeeMore" onclick="chaKanGengDuo()">查看更多</div>
@@ -331,7 +336,7 @@
             <div class="clear"></div>
         </div>
     </div>
-    
+
     <script>
         //窗口固定效果
         $(function () {
@@ -359,6 +364,6 @@
     </script>
 
     @* 清除浮动，使内容可以撑开父容器的高度 *@
-    @*<div style="clear:both"></div>*@
+    @*<div style="clear:both"></div>*@<div style="clear:both"></div><div style="clear:both"></div>
 
 </div>

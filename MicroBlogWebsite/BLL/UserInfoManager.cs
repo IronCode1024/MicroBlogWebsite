@@ -26,13 +26,15 @@ namespace BLL
         }
 
 
+        /// <summary>
+        ///  注册
+        /// </summary>
+        /// <param name="UiDto"></param>
+        /// <returns></returns>
         public int AddRegister(DTO.UserInfoDto UiDto)
         {
             var uifSvc = new DAL.UserInfoService();
-
             return uifSvc.AddRegister(UiDto);
-
-
         }
 
         /// <summary>

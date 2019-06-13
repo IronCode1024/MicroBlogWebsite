@@ -14,6 +14,18 @@ namespace MicroBlogWebsite.Controllers
         {
             
         }
+        /// <summary>
+        /// UimBll 用户管理BLL类
+        /// </summary>
+        private BLL.UserInfoManager UimBll = new BLL.UserInfoManager();
+        /// <summary>
+        /// MbmBll 用户微博管理类
+        /// </summary>
+        private BLL.MicroBlogManager MbmBll = new BLL.MicroBlogManager();
+        /// <summary>
+        /// OmmBll 他人微博页面微博文章管理类
+        /// </summary>
+        private BLL.OthersMicrobolgManager OmmBll = new OthersMicrobolgManager();
         //
         // GET: /Home/
         /// <summary>
@@ -24,6 +36,25 @@ namespace MicroBlogWebsite.Controllers
         {
             if (Session["User_Login"] != null)//登录成功
             {
+                //用户头像  九宫格
+                IEnumerable<Models.UserInfo> listUserHeadPortrait = UimBll.GetUserHeadPortrait();
+                ViewBag.listUserHeadPortrait = listUserHeadPortrait;
+
+                //微博新鲜事儿
+                IEnumerable<Models.MicroBlog> listNewThings = MbmBll.GetNewThings();
+                ViewBag.listNewThings = listNewThings;
+
+                //微博精选文章
+                IEnumerable<Models.MicroBlog> listNivo = MbmBll.GetNivo();
+                ViewBag.listNivo = listNivo;
+
+                //微博内容     预览
+                IEnumerable<DTO.MicroBlogAndUserInfDto> listPreviewBlog = UimBll.GetPreviewBlog();
+                ViewBag.listPreviewBlog = listPreviewBlog;
+
+                //热门微博用户排名   根据粉丝数量排序
+                IEnumerable<Models.UserInfo> listPopularUser = UimBll.GetPopularUser();
+                ViewBag.listPopularUser = listPopularUser;
                 return View();
             }
             else
@@ -54,13 +85,20 @@ namespace MicroBlogWebsite.Controllers
         {
             if (Session["User_Login"] != null)//登录成功
             {
-                return View();
+                if ( Request["userId"]!=null)
+                {
+                    return View();
+                }
+                else
+                {
+                    return View();
+                }
+                
             }
             else
             {
                 return Redirect(Url.Action("Default", "Access"));
             }
-
         }
 
 
@@ -96,6 +134,40 @@ namespace MicroBlogWebsite.Controllers
             {
                 return Redirect(Url.Action("Default", "Access"));
             }
+        }
+
+
+
+
+        /// <summary>
+        /// 他人的微博主页，相对于当前登录用户
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult OthersMicrobolg()
+        {
+            string UserIdNum = Request["user"];//当登录用户点击他人微博文章或者用户头像时跳转到此页面，传过来的此用户的Id
+            if (UserIdNum!="")
+            {
+                //他人用户基本信息
+                IEnumerable<Models.UserInfo> listOtherUserInfo = OmmBll.GetOtherUserInfo(UserIdNum);
+                foreach (Models.UserInfo item in listOtherUserInfo)
+                {
+                    ViewData["OtherHeadPortrait"] = item.UserHeadPortrait;
+                    ViewBag.OtherUserName = item.UserName;
+                    ViewBag.OtherUserAutograph = item.UserAutograph;//个性签名
+                }
+                ViewBag.listOtherUserInfo = listOtherUserInfo;
+
+                //微博内容     预览
+                IEnumerable<DTO.MicroBlogAndUserInfDto> listOtherBlog = OmmBll.GetOtherBlog(UserIdNum);
+                ViewBag.listOtherBlog = listOtherBlog;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+            
         }
     }
 }

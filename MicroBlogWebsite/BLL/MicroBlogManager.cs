@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
+    /// <summary>
+    /// MicroBlogManager  微博文章业务逻辑类
+    /// </summary>
     public class MicroBlogManager
     {
         /// <summary>
@@ -15,7 +18,6 @@ namespace BLL
         public IEnumerable<Models.MicroBlog> GetNewThings()
         {
             var uifSvc = new DAL.MicroBlogService();
-
             var NewThingsEntity = uifSvc.GetNewThings();
             return NewThingsEntity;
 
@@ -30,7 +32,6 @@ namespace BLL
             var uifSvc = new DAL.MicroBlogService();
             var GetNivoEntity = uifSvc.GetNivo();
             return GetNivoEntity;
-
         }
     }
 }

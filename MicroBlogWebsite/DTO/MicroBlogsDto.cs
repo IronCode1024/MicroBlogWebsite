@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class MicroBlogs
+    public class MicroBlogsDto
     {
         public int UserID { get; set; }//UserID  外键（UserInfo）
         public string Title { get; set; }//标题

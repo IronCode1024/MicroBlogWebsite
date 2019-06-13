@@ -40,12 +40,12 @@ namespace DAL
         /// </summary>
         /// <param name="t"></param>
         /// <returns></returns>
-        public async Task EditAsync(T t)
+        public int EditAsync(T t)
         {
             //DbContext.Student
             //DbContext.Class
             DbContexts.Entry(t).State = System.Data.Entity.EntityState.Modified;
-            await DbContexts.SaveChangesAsync();//异步方法
+            return DbContexts.SaveChanges();//异步方法
         }
 
 
@@ -54,12 +54,12 @@ namespace DAL
         /// </summary>
         /// <param name="t"></param>
         /// <returns></returns>
-        public async Task TrueRemoveAsync(int id)
+        public int TrueRemoveAsync(int id)
         {
             var t = new T();//需要在上面添加new()约束
             t.Id = id;
             DbContexts.Entry(t).State = System.Data.Entity.EntityState.Modified;
-            await DbContexts.SaveChangesAsync();//异步方法
+            return DbContexts.SaveChanges();
         }
 
 
@@ -93,7 +93,7 @@ namespace DAL
         //{
         //    return await GetAll().FirstAsunc(m => m.Id == id);
         //}
-        public T GetOneAsync(int id)
+        public T GetOne(int id)
         {
             return GetAll().First(m => m.Id == id);
         }
@@ -104,14 +104,14 @@ namespace DAL
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task RemoveAsync(int id)
+        public int IsRemove(int id)
         {
             //var t = new T() { Id = id };
             var t = new T();
             t.Id = id;
             DbContexts.Entry(t).State = System.Data.Entity.EntityState.Unchanged;
             t.IsRemoved = false;
-            await DbContexts.SaveChangesAsync();
+            return DbContexts.SaveChanges();
         }
 
 

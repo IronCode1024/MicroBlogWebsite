@@ -39,8 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommentDto.cs" />
+    <Compile Include="GoodFriendDto.cs" />
+    <Compile Include="GroupingDto.cs" />
     <Compile Include="MicroBlogAndUserInfDto.cs" />
-    <Compile Include="MicroBlogs.cs" />
+    <Compile Include="MicroBlogsDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserInfoAndGoodFriendDto.cs" />
     <Compile Include="UserInfoDto.cs" />

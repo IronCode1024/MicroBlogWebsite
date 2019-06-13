@@ -1,7 +1,7 @@
 ﻿body {
     margin: 0px;
     padding: 0px;
-    font: 12px/1.3 Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    font: 16px/1.3 Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
 }
 
 img {
@@ -244,21 +244,35 @@ img {
     height: auto;
     margin-left: 10px;
 }
+/*中间内容标题伪类样式*/
+.titleCenter p {
+    color:#808080;
+}
+.titleCenter p:hover {
+    color:red;
+}
+
 /*文章下面的用户头像小图标*/
 .UserHeadDiv {
     display: inline-table;
     width: auto;
-    border: 1px solid blue;
+    /*border: 1px solid blue;*/
 }
 /*转发评论点赞*/
 .zfpldz {
     margin-top: 1px;
     float: right;
-    border: 1px solid #808080;
+    /*border: 1px solid #808080;*/
     width: 168px;
     height: 20px;
     line-height: 22px;
 }
+    .zfpldz a {
+        color:#808080;
+    }
+    .zfpldz a:hover {
+        color:#eeb20d;
+    }
 
 .zf {
     display: block;
@@ -406,6 +420,15 @@ img {
 .heatuserUl {
     margin-left: 10px;
 }
+    .heatuserUl li b {
+        color:red;
+    }
+    .heatuserUl li b:hover {
+        color:blue;
+    }
+    .heatuserUl li span:hover {
+        color:red;
+    }
 
 
 

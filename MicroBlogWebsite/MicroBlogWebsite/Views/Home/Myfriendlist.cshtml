@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Myfriendlist";
+    ViewBag.Title = "我的好友";
     Layout = "~/Views/shared/_LayoutHome.cshtml";
 }
 @section Head{    @*head文件*@
@@ -23,31 +23,36 @@
             }
         }
     }
-    $(function () {
-        $('#btn').click(function () {
-            var name = prompt("请输入新分组的名称", "");
-            document.getElementById("aaa").innerHTML += "<li class=\"newLi\">" + name + "</li>";
-        })
-        $('#btns').click(function () {
-            var aa = "@ViewBag.aa";
-            alert(aa);
-        });
-        $('#btnq').click(function () {
-            alert('取消关注');
-        });
-    })
+    function btns() {
+        var aa = "@ViewBag.aa";
+        alert(aa);
+    }
+    function btnq() {
+        alert('取消关注');
+    }
+
+    
+    function btn() {
+        var name = prompt("请输入新分组的名称", "");
+        if (name!=null) {
+            document.getElementById("aaa").innerHTML += "<a class=\"newLi\">" + name + "</a>";
+        }
+        
+    }
+
+
     window.onscroll = function () {
         var t = document.documentElement.scrollTop || document.body.scrollTop;
-        
+
         var fi = document.getElementById("left");
         if (t >= 530) {
             //alert(t);
             fi.style.position = "absolute";
-            
+
             //fi.style.left = "733px";
             fi.style.top = t+ "px";
 
-            
+
 
         }
         else {
@@ -60,12 +65,32 @@
 </script>
 }
 
+<!--用户头像背景图片-->
+@section UserSkinBg{
+    <style type="text/css">
+        .bg {
+            background-image: url(/content/images/UserImg/mymicrobolg/handimg.jpg);
+        }
+    </style>
+}
+<!--用户头像-->
+@section HeadPortrait{
+    <img id="handimgmax" class="handimgmaxs" src="/content/images/UserImg/mymicrobolg/handimgmax.jpg" />
+}
+<!--更换皮肤-->
+@section ReplaceSkin{
+    <img src="/content/images/LayoutHome/updatebg.png" height="20" /><span>更换皮肤</span>
+}
+
+
+
+
 <div id="MyBody" class="" style="width: 1300px; margin: 0px auto;">
-    <div style="height: auto;">
+    <div style="height:auto;">
 
         <div id="left">
             <div id="leftlabel">
-                <div class="guanzhu" style="height: 30px; width: 400px; margin-left: -22px;">
+                <div class="guanzhu" style="height: 30px; width: 400px; margin-left: -21px;">
                     <ul>
                         <li style="background-color: #F2F2F5; padding-left: 40px; border-bottom: 1px solid #F2F2F5">
                             <a href="#">
@@ -79,11 +104,10 @@
                     <ul>
                         <li>
                             <a href="#">已分组</a>
-                            <div>
+                            <div id="aaa">
                                 <a href="#">明星</a>
                                 <a href="#">游戏</a>
                                 <a href="#">美食</a>
-                                <a href="#" id="aaa"></a>
                             </div>
                         </li>
                         <li>
@@ -94,9 +118,10 @@
                         </li>
                     </ul>
                 </div>
+
                 <div style="margin-left: 30px; border: 1px solid #b2acac; width: 85px; border-radius: 5px; height: 29px;">
                     <img src="~/Content/images/UserImg/myfriendlist/2019-06-05_103428.png" />
-                    <input type="button" value="添加分组" id="btn" style="width: 70px; height: 29px; margin-left: -10px; margin-top: 0px; border-radius: 5px; background-color: white; border: none;" />
+                    <input type="button" value="添加分组" id="btn" onclick="btn()" style="width: 70px; height: 29px; margin-left: -10px; margin-top: 0px; border-radius: 5px; background-color: white; border: none;" />
                 </div>
                 <div class="fensi" style="height: 30px; width: 400px; margin-left: -22px; margin-top: 10px;">
                     <ul style="height: 30px;">
@@ -121,18 +146,20 @@
 
 
 
-        <div id="mindd">
-            <div id="minddbar">
+        <div id="mindd" class="mindds" style="width: 870px; height: auto; border-radius: 3px; ">
+            <div id="minddbar" class="minddbars" style="height:60px">
                 <div class="lineh" style="height: 50px; border-bottom: 1px solid #d9cfcf;">
                     <ul>
-                        <li><a href="#">全部关注453</a></闪电>
+                        <li><a href="#">全部关注453</a></li>
                     </ul>
                     <input type="text" class="txts" placeholder="请输入所查询的内容" /><input type="button" value="搜索" class="btns" />
                 </div>
             </div>
-            <div class="rightthree" style="margin-top: -630px; width: 100%;">
-                <div style="margin: 0px auto; width: 800px;">
-                    @for (int i = 0; i <= 5; i++)
+
+
+            <div class="rightthree" style="width: auto;height:auto;margin:0px auto;margin-top:-20px;margin-left:10px;">
+                <div style="margin: 0px auto; width: 830px; height: auto;">
+                    @for (int i = 0; i <= 8; i++)
                     {
                         if (i % 2 == 0)
                         {
@@ -158,8 +185,8 @@
                                     <li style="font-size: 13px; color: #808080;">已关注</li>
                                     <li style="font-size: 13px; color: #808080;">个性签名</li>
                                     <li>
-                                        <input type="button" value="设置备注" id="btns" style="border-radius: 5px; border: 1px solid #D9D9D9; background-color: white" />
-                                        <input type="button" value="取消关注" id="btnq" style="margin-left: 10px; border-radius: 5px; border: 1px solid #D9D9D9; background-color: white" />
+                                        <input type="button" class="btns" value="设置备注" id="btns" onclick="btns()" style="border-radius: 5px; border: 1px solid #D9D9D9; background-color: white;cursor:pointer;" />
+                                        <input type="button" value="取消关注" id="btnq" onclick="btnq()" style="margin-left: 10px; border-radius: 5px; border: 1px solid #D9D9D9; background-color: white; cursor: pointer;" />
                                     </li>
                                 </ul>
                             </div>

@@ -1,0 +1,123 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!--
+    此页面为他人微博页面，相对于当前登录用户而言的他人微博主页，显示他人微博的基本信息和发布的微博内容
+-->
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>OthersMicrobolg</title>
+    <link href="~/Content/css/OthersMicrobolgStyle.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#handimgmax").mouseover(function () {
+                $("#imgTip")
+                .attr("src", this.src)
+                .show();
+            });
+            $("img").mouseout(function () {
+                $("#imgTip").hide();
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+    <div id="navDiv" class="navDivBox">
+        <nav class="nav-site">
+            <ul class="nav-site-ul">
+                <li class="">  <a href="/Home/Index" class="logo"><img src="~/Content/images/LayoutHome/talanglogo.png" /></a></li>
+                <li class="nav-site-ul-li1">@Html.ActionLink("首页", "Index", "Home", new { }, new { @class = "navli" })</li>
+                <li>@Html.ActionLink("个人中心", "Personalcenter", "Home", new { }, new { @class = "navli" })</li>
+                <li>@Html.ActionLink("账户设置", "Personalcenter", "Home", new { }, new { @class = "navli" })</li>
+
+                @* 登录之后显示退出按钮 *@
+                <li>@Html.ActionLink("退出", "OutLogin", "Access", new { }, new { @class = "navli" })</li>
+            </ul>
+        </nav>
+    </div>
+
+
+
+    <div id="handbgi" class="handbgis" style="background-image: url(/content/images/UserImg/mymicrobolg/handimg.jpg);">
+
+        <div class="handimg">
+            <a href="#">
+                <!--他人头像   /Content/images/UserImg/HeadPortrait/1.jpg-->
+                <img id="handimgmax" class="handimgmaxs" src="@ViewData["OtherHeadPortrait"]" /><!--/content/images/UserImg/mymicrobolg/handimgmax.jpg-->
+            </a>
+            <img id="imgTip" />
+        </div>
+
+        <div id="handnr">
+            <div class="username">
+               <!--用户名称-->
+                @Html.ViewBag.OtherUserName
+            </div>
+            <div class="userremark">
+                <!--用户个性签名-->
+                @ViewBag.OtherUserAutograph
+            </div>
+        </div>
+    </div>
+
+
+    <div id="centerBox" class="centerBox">
+        @{
+            foreach (DTO.MicroBlogAndUserInfDto item in ViewBag.listOtherBlog)
+            {
+                <div class="mbArticleBox">
+                    <div class="mbArticleBoxSon">
+                        <div class="mbArticleLeft">
+                            <div style="margin-top:10px;"><a class="titleCenter" href="/Home/OthersMicrobolg?user=@item.UserID"><p style="font-size:18px;">@item.Title </p></a></div>
+                            <div style="margin-top: 20px;font-size:15px;">
+                                @{
+                string str = "";//此变量存储最终要显示的标题
+                if (item.Content_text.Length > 50)
+                {
+                    str = item.Content_text.Substring(0, 50) + "......";//从0开始,截取8位
+                }
+                else
+                {
+                    str = item.Content_text;//如果小于等于8位,则不变
+                }
+                @str;
+                                }
+
+                            </div>
+
+                            <div style="margin-top:20px;">
+                                <div class="UserHeadDiv">
+                                    <img class="UserHeadImg" src="@item.UserHeadPortrait" />
+                                    <span class="UserNameSpan">@item.UserName &nbsp;&nbsp;&nbsp; @item.CreateTime.Year 年 @item.CreateTime.Month 月 @item.CreateTime.Day 日</span>
+                                </div>
+
+                                <!--点赞评论转发-->
+                                <div class="zfpldz">
+                                    <a href="#"><span class="zf"><span style="margin-left:20px;">36592</span></span></a>
+                                    <a href="#">
+                                        <span class="pl"><span style="margin-left:20px;">2354</span></span>
+                                    </a>
+                                    <a href="#"><span class="dz"><span style="margin-left:20px;">@item.Points_number</span></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="mbArticleRight">
+                                <img class="mbArticleRightImg" src="@item.Content_img" />
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+</body>
+</html>

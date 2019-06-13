@@ -84,10 +84,35 @@
     margin: 0 auto;
     width: 1300px;
     height: 400px;
-    background-image: url("/content/images/UserImg/mymicrobolg/handimg.jpg");
+    /*background-image: url("/content/images/UserImg/mymicrobolg/handimg.jpg");*/
     background-size: 100% 100%;
     background-repeat: no-repeat;
     border-top: 1px solid rgba(255, 255, 255, 0.00);
+}
+#handgh {
+    /*width:100px;*/
+    background-color:#fff;
+    border:1px solid black;
+    font-size:12px;
+    float:right;
+    margin-top:20px;
+    margin-right:30px;
+    display:none;
+    padding:5px 10px;
+    line-height:10px;
+}
+    #handgh a {
+        /*border:1px solid black;*/
+    }
+    #handgh a span {
+        width:50px;
+        height:10px;
+       /*border:1px solid black;*/
+       margin-left:10px;
+       margin-top:6px;float:right;
+    }
+#handbgi:hover #handgh {
+    display:block;
 }
 
 .handimg {
@@ -111,7 +136,7 @@
     /*border:1px solid black;*/
 }
 
-#handimgmax {
+.handimgmaxs {
     border-radius: 140px;
     width: 140px;
     height: 140px;
@@ -151,7 +176,7 @@
 }
 
     #Navigation ul {
-        margin-left: -50px;
+        margin-left: 100px;
     }
 
         #Navigation ul li {

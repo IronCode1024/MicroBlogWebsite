@@ -82,11 +82,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\DefaultStyle.css" />
+    <Content Include="Content\css\IndexStyle.css" />
     <Content Include="Content\css\LayoutAccessStyle.css" />
     <Content Include="Content\css\LayoutHomeStyle.css" />
     <Content Include="Content\css\LoginRegisteStyle.css" />
     <Content Include="Content\css\MyfriendlistStyle.css" />
     <Content Include="Content\css\MymicrobolgStyle.css" />
+    <Content Include="Content\css\OthersMicrobolgStyle.css" />
+    <Content Include="Content\css\PersonalcenterStyle.css" />
     <Content Include="Content\images\AccessImg\DefaultImg\LunboImg\005tX86ply1fwsv3wkpzzj313p13e7d1.jpg" />
     <Content Include="Content\images\AccessImg\DefaultImg\LunboImg\580ead85ly1fyebtgyh5zj219u0dytew.jpg" />
     <Content Include="Content\images\AccessImg\DefaultImg\LunboImg\90eb2137ly1flzc6k2gixj20pn0ep7cd.jpg" />
@@ -96,6 +99,7 @@
     <Content Include="Content\images\AdvertisementImg\heidong1.png" />
     <Content Include="Content\images\LayoutHome\bg.jpg" />
     <Content Include="Content\images\LayoutHome\dianzan.PNG" />
+    <Content Include="Content\images\LayoutHome\updatebg.png" />
     <Content Include="Content\images\UserImg\HeadPortrait\11.jpg" />
     <Content Include="Content\images\LayoutHome\pinglun.PNG" />
     <Content Include="Content\images\LayoutHome\talanglogo.png" />
@@ -117,6 +121,16 @@
     <Content Include="Content\images\UserImg\HeadPortrait\7.jpg" />
     <Content Include="Content\images\UserImg\Mymicrobolg\handimg.jpg" />
     <Content Include="Content\images\UserImg\Mymicrobolg\handimgmax.jpg" />
+    <Content Include="Content\images\UserImg\UserBgImg\bg1.jpg" />
+    <Content Include="Content\images\UserImg\UserBgImg\bg10.jpg" />
+    <Content Include="Content\images\UserImg\UserBgImg\bg2.jpg" />
+    <Content Include="Content\images\UserImg\UserBgImg\bg3.jpg" />
+    <Content Include="Content\images\UserImg\UserBgImg\bg4.jpg" />
+    <Content Include="Content\images\UserImg\UserBgImg\bg5.jpg" />
+    <Content Include="Content\images\UserImg\UserBgImg\bg6.jpg" />
+    <Content Include="Content\images\UserImg\UserBgImg\bg7.jpg" />
+    <Content Include="Content\images\UserImg\UserBgImg\bg8.jpg" />
+    <Content Include="Content\images\UserImg\UserBgImg\bg9.jpg" />
     <Content Include="Content\images\UserImg\UserMicroBlogImg\1.jpg" />
     <Content Include="Content\images\UserImg\UserMicroBlogImg\10.jpg" />
     <Content Include="Content\images\UserImg\UserMicroBlogImg\11.jpg" />
@@ -531,6 +545,7 @@
     <Content Include="Views\Home\Mymicrobolg.cshtml" />
     <Content Include="Views\Home\Myfriendlist.cshtml" />
     <Content Include="Views\Home\Personalcenter.cshtml" />
+    <Content Include="Views\Home\OthersMicrobolg.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -540,7 +555,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\images\UserImg\UserBgImg\" />
+    <Folder Include="Content\videos\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

@@ -43,6 +43,7 @@
     <Compile Include="GoodFriendManager.cs" />
     <Compile Include="GroupingManager.cs" />
     <Compile Include="MicroBlogManager.cs" />
+    <Compile Include="OthersMicrobolgManager.cs" />
     <Compile Include="UserInfoManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

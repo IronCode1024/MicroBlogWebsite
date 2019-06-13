@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Personalcenter";
+    ViewBag.Title = "个人中心";
     Layout = "~/Views/shared/_LayoutHome.cshtml";
 }
 
@@ -7,5 +7,19 @@
 
 }
 
-<h2>Personalcenter</h2>
-
+<!--用户头像背景图片-->
+@section UserSkinBg{
+    <style type="text/css">
+        .bg {
+            background-image: url(/content/images/UserImg/mymicrobolg/handimg.jpg);
+        }
+    </style>
+}
+<!--用户头像-->
+@section HeadPortrait{
+    <img id="handimgmax" class="handimgmaxs" src="/content/images/UserImg/mymicrobolg/handimgmax.jpg" />
+}
+<!--更换皮肤-->
+@section ReplaceSkin{
+    <img src="/content/images/LayoutHome/updatebg.png" height="20" /><span>更换皮肤</span>
+}

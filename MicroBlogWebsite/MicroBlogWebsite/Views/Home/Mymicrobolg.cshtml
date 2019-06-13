@@ -1,109 +1,216 @@
-﻿
-@{
-    ViewBag.Title = "Mymicrobolg";
+﻿@{
+    ViewBag.Title = "我的微博";
     Layout = "~/Views/shared/_LayoutHome.cshtml";
 }
 
 @section Head{    @*head文件*@
 <link href="~/Content/css/MymicrobolgStyle.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+        window.onscroll = function () {
+            var t = document.documentElement.scrollTop || document.body.scrollTop;
+            var fi = document.getElementById("minddbarul");
+            if (t >= 725) {
+                fi.style.position = "absolute";
+                fi.style.top = t - 710 + "px";
+            }
+        }
+        //Dian();
+
+
+    });
+    function dels(i) {
+        //if ($("#twoinfor").css("display") == 'block') {
+
+        //}
+        //$("#del")(function () {
+        //    $("#twoinfor").css({ "display": "block" });
+
+        //});
+        //if ($("#twoinfor").css("display") == 'block') {
+
+        //    $("#del").click(function () {
+        //        $("#twoinfor").css({ "display": "none" });
+        //    });
+        //}
+        //this.css({ "display": "block" });
+        //for (var i = 0; i < 10; i++) {
+        //    var fi = document.getElementById("twoinfor_1");
+        //    fi.style.display = "block";
+        //    alert(fi.style.display);
+        //}
+
+        var index = 0;
+        var fi = i.id
+        var num = fi.substring(4, 5);
+        var ff = document.getElementById("twoinfor_" + num);
+        if (index == 0) {
+            index = 0;
+            ff.style.display = "block";
+            index += 1;
+        }
+        else {
+            ff.style.display = "none";
+            index = 0;
+        }
+
+
+    }
+</script>
+
 }
 
-<div id="MyBody" class="" style="width: 1300px; height: 100%; border: 1px solid black; margin: 0px auto;">
-    <div style="height: 2000px;">
-       
-        <div id="left">
-            <div id="leftinfor">
-                <ul>
-                    <li><a href="#">342</a></li>
-                    <li>关注</li>
-                </ul>
-                <ul>
-                    <li><a href="#">183732983</a></li>
-                    <li>粉丝</li>
-                </ul>
-                <ul style="border: none;">
-                    <li><a href="#">453</a></li>
-                    <li>微博</li>
-                </ul>
-            </div>
-            <div id="leftlabel">
-                <div class="leftwrite">
-                    <p>个性标签</p>
-                </div>
-                <div id="leftlabeltext">
-                    <span>笔芯啦啦</span><span>实力水吹</span>
-                    <span>小仙女</span><span>铁杆粉丝</span>
-                    <span>可爱</span><span>啦啦啦</span>
-                    <span>可爱</span><span>实力水吹</span>
-                    <span><a href="#">…</a></span>
-                </div>
-                <div id="leftadd">
-                    <input type="text" class="addtext" /><input type="button" class="addbtn" value="添加" />
-                </div>
+<!--用户头像背景图片-->
+@section UserSkinBg{
+    <style type="text/css">
+        #handbgi {
+            background-image: url(/content/images/UserImg/mymicrobolg/handimg.jpg);
+        }
+    </style>
+}
+<!--用户头像-->
+@section HeadPortrait{
+    <img id="handimgmax" class="handimgmaxs" src="/content/images/UserImg/mymicrobolg/handimgmax.jpg" />
+}
+<!--更换皮肤-->
+@section ReplaceSkin{
+    <img src="/content/images/LayoutHome/updatebg.png" height="20" /><span>更换皮肤</span>
+}
 
-            </div>
-            <div id="leftLately">
-                <div class="leftwrite">
-                    <p>最近关注</p>
-                </div>
-                <ul>
-                    <li title="最近关注用户1"><a href="#"></a></li>
-                    <li title="最近关注用户2"><a href="#"></a></li>
-                    <li title="最近关注用户2"><a href="#"></a></li>
-                    <li title="最近关注用户2"><a href="#"></a></li>
-                    <li title="最近关注用户2"><a href="#"></a></li>
-                    <li title="最近关注用户2"><a href="#"></a></li>
-                </ul>
-            </div>
-        </div>
-        <div id="mindd">
-            <div id="minddbar">
-                <ul>
-                    <li><a href="#">全部</a></li>
-                    <li><a href="#">热门</a></li>
-                    <li class="xiala">
-                        <a href="#">更多</a>
-                        <ul id="twobar">
-                            <li><a href="#">原创</a></li>
-                            <li><a href="#">图片</a></li>
-                            <li><a href="#">视频</a></li>
-                            <li><a href="#">音乐</a></li>
-                        </ul>
-                    </li>
-                    <li class="mindsearch">
-                        <input type="text" id="mindtxt" />
-                        <input type="button" value="搜索" id="mindbtn" />
-                    </li>
-                </ul>
-            </div>
-            <div class="mindmicroblog">
-                <div class="microblogtop">
-                    <div class="tophadnimg">
-                        <img src="~/Content/images/Mymicrobolg/handimgmax.jpg" />
-                    </div>
-                    <div class="topinfor">
+
+
+
+<div id="MyBody" class="" style="width: 1300px; height: 100%; margin: 0px auto;">
+    <div style="height:auto;">
+        
+        <div style="overflow: hidden; height: auto">
+            <div id="left">
+                <div id="leftk">
+                    <div id="leftinfor">
                         <ul>
-                            <li class="topname"><a href="#">现在我是喻文波的狗</a></li>
-                            <li>
-                                2019年5月31 12:35
-                            <li>
+                            <li><a href="#">342</a></li>
+                            <li>关注</li>
                         </ul>
-                    </div>
-                    <div class="del">
-                    </div>
-                    <div class="twoinfor">
                         <ul>
-                            <li><a href="#">删除</a></li>
-                            <li><a href="#">编辑</a></li>
-                            <li><a href="#">收藏</a></li>
+                            <li><a href="#">183732983</a></li>
+                            <li>粉丝</li>
+                        </ul>
+                        <ul style="border: none;">
+                            <li><a href="#">453</a></li>
+                            <li>微博</li>
                         </ul>
                     </div>
                 </div>
-                <div class="microblogmid"></div>
-                <div class="microblogbtm"></div>
+                <div id="leftlabel">
+                    <div class="leftwrite">
+                        <p>个性标签</p>
+                    </div>
+                    <div id="leftlabeltext">
+                        <span>笔芯啦啦</span><span>实力水吹</span>
+                        <span>小仙女</span><span>铁杆粉丝</span>
+                        <span>可爱</span><span>啦啦啦</span>
+                        <span>可爱</span><span>实力水吹</span>
+                        <span><a href="#">…</a></span>
+                    </div>
+                    <div id="leftadd">
+                        <input type="text" class="addtext" /><input type="button" class="addbtn" value="添加" />
+                    </div>
+
+                </div>
+                <div id="leftLately">
+                    <div class="leftwrite">
+                        <p>最近关注</p>
+                    </div>
+                    <ul>
+                        <li title="最近关注用户1"><a href="#"></a></li>
+                        <li title="最近关注用户2"><a href="#"></a></li>
+                        <li title="最近关注用户2"><a href="#"></a></li>
+                        <li title="最近关注用户2"><a href="#"></a></li>
+                        <li title="最近关注用户2"><a href="#"></a></li>
+                        <li title="最近关注用户2"><a href="#"></a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div id="mindds" class="mindd">
+                <div id="minddbar">
+                    <div id="minddbarl">
+                        <!--全部  热门   更多-->
+
+                        <ul id="minddbarul">
+                            <li class="ac"><a href="#">全部</a></li>
+                            <li class="ac"><a href="#">热门</a></li>
+                            <li class="xiala">
+                                <a href="#">更多</a>
+                                <ul id="twobar">
+                                    <li><a href="#">原创</a></li>
+                                    <li><a href="#">图片</a></li>
+                                    <li><a href="#">视频</a></li>
+                                    <li><a href="#">音乐</a></li>
+                                </ul>
+                            </li>
+                            <li class="mindsearch">
+                                <input type="text" id="mindtxt" />
+                                <input type="button" value="搜索" id="mindbtn" />
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+                @for (int i = 1; i <= 6; i++)
+                {
+                    <div class="mindmicroblog">
+                        <div class="microblogtop">
+                            <!--用户头像-->
+                            <div class="tophadnimg">
+                                <img src="~/Content/images/Mymicrobolg/handimgmax.jpg" />
+                            </div>
+                            <div class="topinfor">
+                                <ul>
+                                    <li class="topname"><a href="#">现在我是喻文波的狗</a></li>
+                                    <li>
+                                        2019年5月31 12:35
+                                    <li>
+                                </ul>
+                            </div>
+                            <div id="del_@i" class="dels" onclick="dels(this)">
+                            </div>
+                            <div id="twoinfor_@i" class="twoinfors">
+                                <ul>
+                                    <li><a href="#">删除</a></li>
+                                    <li><a href="#">编辑</a></li>
+                                    <li><a href="#">收藏</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="microblogmid"></div>
+
+                        <div class="microblogbtm">
+                            <ul>
+                                @*<ul>
+                <li><a href="#">( ′▽` )?转发</a></li>
+                <li><a href="#">???( ??? )???评论</a></li>
+                <li><a href="#">(￣▽￣)／赞</a></li>
+            </ul>*@
+                                <li><a href="#"><span class="zf"><span style="margin-left:20px;padding-left:6px">36592</span></span></a></li>
+                                <li>
+                                    <a href="#">
+                                        <span class="pl"><span style="margin-left: 20px; padding-left: 6px">2354</span></span>
+                                    </a>
+                                </li>
+                                <li><a href="#"><span class="dz"><span style="margin-left: 20px; padding-left: 6px">23</span></span></a></li>
+                            </ul>
+</div>
+
+                    </div>
+                }
+
             </div>
         </div>
 
     </div>
 </div>
-

@@ -4,6 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <link href="~/Content/css/LayoutHomeStyle.css" rel="stylesheet" />
     @RenderSection("head", required: true)  @*View页面自定义特定js/css使用*@
 
@@ -14,7 +15,7 @@
             height: 49px;
         }
     </style>
-    <script>
+    <script type="text/javascript">
         $(function () {
             $("#handimgmax").mouseover(function () {
                 $("#imgTip")
@@ -24,19 +25,9 @@
             $("img").mouseout(function () {
                 $("#imgTip").hide();
             });
-            var index = 0;
-            $(".del").click(function () {
-                if (index == 0) {
-                    index = 0;
-                    $(".twoinfor").css({ "display": "block" });
-                    index += 1;
-                }
-                else {
-                    $(".twoinfor").css({ "display": "none" });
-                    index = 0;
-                }
-            });
+
         });
+
     </script>
 </head>
 <body>
@@ -73,14 +64,21 @@
         </nav>
     </div>
      -->
-
-    <div id="handbgi">
+    <!--用户头像和背景导航栏-->
+    @RenderSection("UserSkinBg", required: false)<!--用户头像背景图片-->
+    <div id="handbgi" class="bg">
+        <div id="handgh">
+            <a href="#">
+                <!--更换皮肤-->
+                @RenderSection("ReplaceSkin", required: false)
+                <!--<img src="/content/images/LayoutHome/updatebg.png" height="20" /><span>更换皮肤</span>-->
+            </a>
+        </div>
         <div class="handimg">
             <a href="#">
-                <img id="handimgmax" src="~/Content/images/UserImg/Mymicrobolg/handimgmax.jpg" />
+                @RenderSection("HeadPortrait", required: false)
+                <!--<img id="handimgmax" class="handimgmaxs" src="/content/images/UserImg/mymicrobolg/handimgmax.jpg" />-->
             </a>
-
-
             <img id="imgTip" />
         </div>
 
@@ -95,24 +93,13 @@
     </div>
     <div id="Navigation">
         <ul>
-            <li>@Html.ActionLink("我的主页", "Index", new { }, new { @class = "navUserli" })</li>
             <li>@Html.ActionLink("我的微博", "Mymicrobolg", "Home", new { }, new { @class = "navUserli" })</li>
             <li>@Html.ActionLink("我的好友", "Myfriendlist", "Home", new { }, new { @class = "navUserli" })</li>
             <li>@Html.ActionLink("我的资料", "Personalcenter", "Home", new { }, new { @class = "navUserli" })</li>
-            @*<li>
-                    <a href="#">我的主页</a>
-                </li>
-                <li>
-                    <a href="#">我的微博</a>
-                </li>
-                <li>
-                    <a href="#">我的相册</a>
-                </li>
-                <li>
-                    <a href="#">我的资料</a>
-                </li>*@
         </ul>
     </div>
+
+    
 
 
 

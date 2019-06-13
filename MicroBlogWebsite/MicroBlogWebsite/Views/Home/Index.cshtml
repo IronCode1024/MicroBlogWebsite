@@ -1,18 +1,386 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "我的首页";
     Layout = "~/Views/shared/_LayoutHome.cshtml";
 }
+
 @section Head{    @*head文件*@
 <script src="~/Scripts/jquery-1.10.2.js"></script>
-    <script type="text/javascript">
-        //$(function () {
-        //    alert("hello jquery");
-        //});
-    </script>
+<link href="~/Content/css/DefaultStyle.css" rel="stylesheet" />
+<script type="text/javascript">
+    //$(function () {
+    //    alert("hello jquery");
+    //});
+    function turnPics() {
+        var index = 0;
+        //var stop = false;
+        var $li = $(".indexBannerView").find("#slider li");
+        $("#bannerPre").hide(); //隐藏左右图标
+        $("#bannerNext").hide();
+        $("#bannerPre").click(function () {
+            index++;
+            if (index >= $("#slider li").length) {//大于slider li的叠加长度的时候归零
+                index = 0;
+            }
+            $li.eq(index).stop(true, true).fadeIn("slow").siblings().fadeOut("slow");
+            //$pagesLis.eq(index).addClass("active").stop(true, true).siblings().removeClass("active");
+        });
+        $("#bannerNext").click(function () {
+            index++;
+            if (index >= $("#slider li").length) {//大于slider li的叠加长度的时候归零
+                index = 0;
+            }
+            $li.eq(index).stop(true, true).fadeIn("slow").siblings().fadeOut("slow");
+            //$pagesLis.eq(index).addClass("active").stop(true, true).siblings().removeClass("active");
+        });
+        setInterval(function () {
+            index++;
+            if (index >= $("#slider li").length) {//大于slider li的叠加长度的时候归零
+                index = 0;
+            }
+            $li.eq(index).stop(true, true).fadeIn("slow").siblings().fadeOut("slow");
+            //$pagesLis.eq(index).addClass("active").stop(true, true).siblings().removeClass("active");
+        }, 7000);
+
+        $(".indexBannerView").mouseover(function () {//鼠标移入轮播图片内显示左右图标
+            $("#bannerPre").show();
+            $("#bannerNext").show();
+        }).mouseout(function () {//鼠标移出轮播图片内隐藏左右图标
+            $("#bannerPre").hide();
+            $("#bannerNext").hide();
+        });
+    }
+
+    $(function () {
+        turnPics();//banner轮播效果
+    });
+
+</script>
 }
- 
-<div id="" class="" style="width: 1300px; height: 100%; background-color: #7bc5db; margin: 0px auto; ">
-    <div style="height:2000px;"></div>
+<!--用户头像背景图片-->
+@section UserSkinBg{
+    <style type="text/css">
+        .bg {
+            background-image: url(/content/images/UserImg/mymicrobolg/handimg.jpg);
+        }
+    </style>
+}
+<!--用户头像-->
+@section HeadPortrait{
+<img id="handimgmax" class="handimgmaxs" src="/content/images/UserImg/mymicrobolg/handimgmax.jpg" />
+    }
+<!--更换皮肤-->
+@section ReplaceSkin{
+    <img src="/content/images/LayoutHome/updatebg.png" height="20" /><span>更换皮肤</span>
+}
+
+
+<div id="" class="" style="width: 1300px; height: 100%; margin: 0px auto;background-color:#fff; ">
+    <div style="height: auto;width:1300px; margin-top: 15px;overflow:hidden">
+        <div id="leftBox" class="leftBox">
+            <div id="newUserBox" class="newUserBox">
+                <h2>新加入用户</h2>
+                <div id="newUserSon" class="newUserSon">
+                    @* 需要从数据库读取最新注册的用户的头像，然后遍历显示到界面上 *@
+                    @{
+                        int num = 0;
+                        foreach (Models.UserInfo item in ViewBag.listUserHeadPortrait)
+                        {
+                            if (num == 9)
+                            {
+                                break;
+                            }
+                            num++;
+                            <a href=javascript:alert(@item.Id)>
+                                <div class="newUserSp">
+                                    <img src="@item.UserHeadPortrait" />
+                                </div>
+                            </a>
+                        }
+                    }
+                </div>
+
+
+                <br /><br /><br />
+                <!--头像下面的竖条装饰-->
+                <div class="newUserBottom">
+                    <div style="width: 5px; height: 50px; background-color: #e9e9e9; float: left; margin-left: 50px; "></div><div style="width: 5px; height: 50px; background-color: #e9e9e9; float: left; margin-left: 50px; "></div><div style="width: 5px; height: 50px; background-color: #e9e9e9; float: left; margin-left: 50px; "></div><div style="width: 5px; height: 50px; background-color: #e9e9e9; float: left; margin-left: 50px; "></div>
+                </div>
+            </div>
+            <br />
+
+            <!--精选文章-->
+            <div id="nivoBox" class="nivoBox">
+                <h2>精选文章</h2>
+                @{
+                    int nivoNum = 0;
+                    foreach (Models.MicroBlog item in ViewBag.listNivo)
+                    {
+                        if (nivoNum == 5)
+                        {
+                            break;
+                        }
+                        nivoNum++;
+
+                        string nivoStr = "";//此变量存储最终要显示的标题
+                        if (item.Title.Length > 15)
+                        {
+                            nivoStr = item.Title.Substring(0, 15) + "......";//从0开始,截取8位
+                        }
+                        else
+                        {
+                            nivoStr = item.Title;//如果小于等于8位,则不变
+                        }
+
+                        <div class="nivoSon">
+                            <a href=javascript:alert(@item.UserID)>
+                                <div class="nivoSp">
+                                    <div class="nivoLeftImg"><img src="@item.Content_img" /></div>
+                                    <div class="nivoRight">
+                                        <div class="nivoRightSon" style="font-size: 16px; height: 50px;">@nivoStr</div>
+                                        <p style="font-size:12px;color:#808080;">点赞数量： @item.Points_number</p>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+        <div id="middleBox" class="middleBox">
+            @* 轮播 *@
+            <div id="topBox" class="topBox">
+                <div class="indexBanner" id="indexBanner">
+                    <div class="indexBannerView">
+                        <ul id="slider" class="indexB_ul">
+                            <li>
+                                <a href="#" style="background-image: url(/Content/images/AccessImg/DefaultImg/LunboImg/90eb2137ly1fm86typshvj20jr0dq76g.jpg); " target="_blank">
+                                    <div class="Fontbar">哆啦A梦和大雄的故事</div>
+                                </a>
+                            </li>
+
+                            <li><a href="#" style="background-image: url(/Content/images/AccessImg/DefaultImg/LunboImg/007J0q47ly1g3ifoindo9j30k00b8gpt.jpg); " target="_blank"><div class="Fontbar">吃瓜！吃瓜！吃瓜瓜！！！</div></a></li>
+
+                            <li><a href="#" style="background-image: url(/Content/images/AccessImg/DefaultImg/LunboImg/90eb2137ly1flzc6k2gixj20pn0ep7cd.jpg); " target="_blank"><div class="Fontbar">江南故事</div></a></li>
+                        </ul>
+
+                        <div class="indexBPage" id="indexBPage">
+                            <!--左右下一张图片按钮  上左 下右-->
+                            <a href="javascript:;" class="pre" id="bannerPre" style="margin-left:1px;">
+                                <img src="../Content/Images/IndexImg/lrs.png" />
+                            </a>
+                            <a href="javascript:;" class="next" id="bannerNext">
+                                <img src="../Content/Images/IndexImg/lrsr.png" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            @* 浏览微博文章 *@
+            <div id="centerBox" class="centerBox">
+                @{
+                    foreach (DTO.MicroBlogAndUserInfDto item in ViewBag.listPreviewBlog)
+                    {
+                        <div class="mbArticleBox">
+                            <div class="mbArticleBoxSon">
+                                <div class="mbArticleLeft">
+                                    <div style="margin-top:10px;"><a class="titleCenter" href="/Home/OthersMicrobolg?user=@item.UserID"><p style="font-size:18px;">@item.Title </p></a></div>
+                                    <div style="margin-top: 20px;font-size:15px;">
+                                        @{
+                        string str = "";//此变量存储最终要显示的标题
+                        if (item.Content_text.Length > 50)
+                        {
+                            str = item.Content_text.Substring(0, 50) + "......";//从0开始,截取8位
+                        }
+                        else
+                        {
+                            str = item.Content_text;//如果小于等于8位,则不变
+                        }
+                        @str;
+                                        }
+
+                                    </div>
+
+                                    <div style="margin-top:20px;">
+                                        <div class="UserHeadDiv">
+                                            <img class="UserHeadImg" src="@item.UserHeadPortrait" />
+                                            <span class="UserNameSpan">@item.UserName &nbsp;&nbsp;&nbsp; @item.CreateTime.Year 年 @item.CreateTime.Month 月 @item.CreateTime.Day 日</span>
+                                        </div>
+
+                                        <!--点赞评论转发-->
+                                        <div class="zfpldz">
+                                            <a href="#"><span class="zf"><span style="margin-left:20px;">36592</span></span></a>
+                                            <a href="#">
+                                                <span class="pl"><span style="margin-left:20px;">2354</span></span>
+                                            </a>
+                                            <a href="#"><span class="dz"><span style="margin-left:20px;">@item.Points_number</span></span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <div class="mbArticleRight">
+                                        <img class="mbArticleRightImg" src="@item.Content_img" />
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+        <div id="rightBox" class="rightBox">
+            <div id="NewThingsBox" class="NewThingsBox">
+                <h2>微博新鲜事</h2><br />
+                @{
+                    int NewThingsNum = 0;
+                    foreach (Models.MicroBlog item in ViewBag.listNewThings)
+                    {
+                        if (NewThingsNum == 4)
+                        {
+                            break;
+                        }
+                        NewThingsNum++;
+
+
+                        string NewThingStr = "";//此变量存储最终要显示的标题
+                        if (item.Title.Length > 15)
+                        {
+                            NewThingStr = item.Title.Substring(0, 15) + "......";//从0开始,截取8位
+                        }
+                        else
+                        {
+                            NewThingStr = item.Title;//如果小于等于8位,则不变
+                        }
+
+
+
+                        TimeSpan numtime = DateTime.Now - item.CreateTime;
+                        string nn = numtime.TotalMinutes.ToString("F0");
+
+                        <div class="NewThingsSon">
+                            <a href=javascript:alert(@item.UserID)>
+                                <div class="NewThingsSp">
+                                    <div class="NewThingsleft">
+                                        <div style="font-size:16px;margin-top:10px;height:50px;">@NewThingStr</div>
+
+                                        <p style="font-size:12px;color:#808080;">@nn 分钟前</p>
+                                    </div>
+                                    <div class="NewThingsRightImg"><img src="@item.Content_img" /></div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                }
+            </div>
+            <br />
+            <!--热门微博用户排名-->
+            <div class="heatuser">
+                <h2>热门微博用户排名</h2>
+                <div class="heatuserSon">
+                    <ul class="heatuserUl">
+                        @{
+                            int PopularUserNum = 1;
+                            foreach (Models.UserInfo item in ViewBag.listPopularUser)
+                            {
+                                if (PopularUserNum == 11)
+                                {
+                                    break;
+                                }
+                                <li>
+                                    <a href=javascript:alert(@item.Id)>
+
+                                        @if (PopularUserNum <= 3)
+                                        {
+                                            <b style="font-size:25px;">@PopularUserNum：@item.UserName</b>
+                                        }
+                                        else
+                                        {
+                                            <span style="font-size:20px;">@PopularUserNum：@item.UserName</span>
+                                        }
+                                        <span style="color:#808080;">粉丝数：@item.UserFansNum</span>
+                                    </a>
+                                </li>
+
+                                        PopularUserNum++;
+                            }
+
+                        }
+                    </ul>
+                </div>
+            </div>
+            <br />
+
+            <!--广告-->
+            <div id="AdvertisementId" class="AdvertisementBox">
+                <h2>广告</h2>
+                @{
+                    for (int i = 0; i < 5; i++)
+                    {
+                        <br />
+                        <div class="AdvertisementSon">
+                            <p style="font-size: 15px; color: black;"><a href="#">科学未来</a><span>的热门文章</span></p>
+                            <div class="AdvertisementLeft">
+                                <a class="tu1" href="#">
+                                    <img src="/Content/images/AdvertisementImg/heidong1.png" />
+                                </a>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="AdvertisementRight">
+                                <ul>
+                                    <li style="height:71px;">
+                                        <p><a href="#">发现宇宙中最大黑洞，距离地球有25亿光年，科学家：双黑洞系统</a></p>
+                                    </li>
+                                    <li>
+                                        <p>@DateTime.Now</p>
+                                    </li>
+                                </ul>
+                                <div class="clear"></div>
+                            </div>
+
+                        </div>
+                    }
+                    <div id="More" class="SeeMore" onclick="chaKanGengDuo()">查看更多</div>
+                }
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <script>
+        //窗口固定效果
+        $(function () {
+            $("#AdvertisementId").mouseover(function () {
+                $("#imgTip")
+                .attr("src", this.src)
+                .show();
+            });
+            $("img").mouseout(function () {
+                $("#imgTip").hide();
+            });
+            var index = 0;
+            $(".del").click(function () {
+                if (index == 0) {
+                    index = 0;
+                    $(".twoinfor").css({ "display": "block" });
+                    index += 1;
+                }
+                else {
+                    $(".twoinfor").css({ "display": "none" });
+                    index = 0;
+                }
+            });
+        });
+    </script>
+
+    @* 清除浮动，使内容可以撑开父容器的高度 *@
+    @*<div style="clear:both"></div>*@<div style="clear:both"></div><div style="clear:both"></div><div style="clear:both"></div>
+
 </div>
+
 

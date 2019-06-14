@@ -178,5 +178,38 @@ namespace MicroBlogWebsite.Controllers
             }
         }
 
+        /// <summary> 
+        /// 找回密码 忘记密码？
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ForgetThePwd()
+        {
+            return View();
+        }
+        /// <summary>
+        /// 找回密码
+        /// </summary>
+        /// <param name="UiDto"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public int ForgetThePwdPost(DTO.UserInfoDto UiDto)
+        {
+            string VerificationCode = Request["InputVerificationCode"];
+            if (VerificationCode == InputVerificationCode)
+            {
+                string UserEmails = Request["UserEmail"];
+                string UserPasswords = Request["Password"];
+                UiDto.UserEmail = UserEmails;
+                UiDto.UserPassword = UserPasswords;
+                int ForgetThePwdEntity = UimBll.ForgetThePwd(UiDto);
+                return ForgetThePwdEntity;
+            }
+            else
+            {
+                int msg = -101;//验证码输入错误
+                return msg;
+            }
+        }
+
     }
 }

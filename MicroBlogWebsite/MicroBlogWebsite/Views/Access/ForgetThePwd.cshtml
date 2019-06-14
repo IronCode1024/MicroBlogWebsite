@@ -1,0 +1,202 @@
+﻿@model MicroBlogWebsite.Model.UserInfoRegister
+@{
+    ViewBag.Title = "找回密码";
+    Layout = "~/Views/shared/_LayoutAccess.cshtml";
+}
+
+@section Head{
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <link href="~/Content/css/LoginRegisteStyle.css" rel="stylesheet" />
+
+
+    <style type="text/css">
+        .BgImg {
+            border-radius: 10px;
+            margin-left: -150px;
+            padding-top: 50px;
+            float: left;
+            width: 500px;
+        }
+
+            .BgImg img {
+                border-radius: 10px;
+            }
+
+        .form-Tips {
+            color: red;
+        }
+    </style>
+}
+
+
+<div class="Panelmaster" style="background-image: url(/Content/images/AccessImg/yuanhua1.jpg);background-repeat:no-repeat;background-size:100% 100%;">
+    <div class="navTop">
+        @*<a href="~/Home/Index">
+                <img src="~/Content/Images/IndexImg/1531469861.png" />
+            </a>*@
+
+
+
+    </div>
+    @*<div style=" border-bottom: 1px solid #949090;"></div>*@
+
+    <div class="Bottoms">
+        @*<img width="700" src="~/Content/Images/LoginImg/bgLoginImg.PNG" />*@
+        <p class="Bgleft">你的心声，</p>
+        <p class="Bgleft">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;世界的回声。</p>
+
+        <div class="panel panel-success">
+            <div class="panel-heading text-center"><h2>找回密码</h2></div>
+            <div class="panel-body">
+                @using (@Html.BeginForm("Register", "Access", FormMethod.Post, new { @id = "" }))
+                {
+                    @Html.ValidationSummary(true)
+                    @*@Html.ValidationMessage("fghfg")*@
+
+                    <h4 class="form-Tips" id="EmailMsg" style="color:red">@*@Html.ValidationMessageFor(m => m.UserEmail, null, new { @style = "color:red" })*@</h4>
+                    <div class="form-group" style="margin-left:51px">
+                        邮箱：@Html.TextBoxFor(x => x.UserEmail, new { placeholder = "邮箱", @class = "form-control", @id = "UserEmail" })
+                    </div>
+
+                    <h4 class="form-Tips" id="PwdMsg">@*@Html.ValidationMessageFor(m => m.Password, null, new { @style = "color:red" })*@</h4>
+                    <div class="form-group" style="margin-left:51px">
+                        密码：@Html.PasswordFor(x => x.Password, new { placeholder = "密码", @class = "form-control", @id = "Password" })
+                    </div>
+
+                    <h4 class="form-Tips" id="ConfirmPwdMsg">@*@Html.ValidationMessageFor(m => m.ConfirmPassword, null, new { @style = "color:red" })*@</h4>
+                    <div class="form-group">
+                        确认密码：@Html.PasswordFor(x => x.ConfirmPassword, new { placeholder = "确认密码", @class = "form-control", @id = "ConfirmPassword" })
+                    </div>
+
+
+                    <h4 class="form-Tips" id="VerificationCodeMsg" style="color:red">@*@ViewBag.RegisterMagCode @Html.ValidationMessageFor(m => m.VerificationCode, null, new { @style = "color:red" }) @Html.ViewBag.failInSend*@</h4> @*failInSend邮箱发送失败*@
+                    <div class="form-group" style="margin-left:36px;">
+                        @*<input type="text" class="form-control" style="width:30%;" />*@
+                        验证码：@Html.TextBoxFor(x => x.VerificationCode, new { placeholder = "验证码", @id = "InputVerificationCode", @style = "width:30%;", @class = "form-control" })
+
+                        @*value="@Html.Value("fasong")"*@
+                        <input class="btn btn-success" id="Obtain" type="button" style="width:110px;height:40px" value="发送" onclick="ObtainSend()" />  @*@Html.Value("fasong")*@
+
+
+
+                        @*@Html.ActionLink("获取", "Emails")*@
+
+                        <br />
+                    </div>
+
+                    <div class="text-center">
+                        <input class="btn btn-success" type="button" onclick="ForgetPwd()" value="确定" />
+                    </div>
+                }
+                @*<div class="navTopleft">
+                    <font>还没有账号？立即注册 @Html.ActionLink("免费注册", "Register")</font>
+                </div>*@
+
+                <script type="text/javascript">
+                    function ObtainSend() {//发送验证码
+                        var UserEmail = $('#UserEmail').val();
+                        var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;//验证邮箱
+                        if (reg.test(UserEmail)) {
+                            $.ajax({
+                                url: '/Access/VerificationCode',
+                                type: 'POST',
+                                data: {
+                                    UserEmail: $('#UserEmail').val()
+                                },
+                                success: function (msg) {
+                                    //alert(msg)
+                                    if (msg != "") {
+                                        var wait = 60;
+                                        function time(obj) {
+                                            if (wait == 0) {
+                                                obj.className = 'btnCode';
+                                                obj.removeAttribute("disabled");
+                                                obj.value = "获取";
+                                                wait = 60;  //waait等于0的时候重新赋值
+                                            } else {
+                                                obj.className = 'btnCodeDisabled';//按钮变灰，不可点击
+                                                obj.setAttribute("disabled", true);
+                                                obj.value = "重新发送(" + wait + "秒)";
+                                                wait--;
+                                                setTimeout(function () {
+                                                    time(obj)
+                                                },
+                                                1000)
+                                            }
+                                        }
+                                        time(document.getElementById("Obtain"));
+                                    }
+                                }
+                            });
+                        }
+                        else {
+                            //alert(1000000)
+                            $('#EmailMsg').text("*邮箱格式错误");
+                        }
+
+                    }
+
+                    function ForgetPwd() {
+
+                        var UserEmail = $('#UserEmail').val();
+                        var Password = $('#Password').val();
+                        var ConfirmPassword = $('#ConfirmPassword').val();
+                        var InputVerificationCode = $('#InputVerificationCode').val();
+
+                        var EmailMsg = $('#EmailMsg').val();
+                        var PwdMsg = $('#PwdMsg').val();
+                        var ConfirmPwdMsg = $('#ConfirmPwdMsg').val();
+                        var VerificationCodeMsg = $('#VerificationCodeMsg').val();
+
+
+                        var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;//验证邮箱
+                        var pwd = /^[a-zA-Z0-9]{6,16}$/;
+                        if (!reg.test(UserEmail)) {
+                            $('#EmailMsg').text("*邮箱格式错误");
+                        } else {
+                            $('#EmailMsg').text("");
+                        }
+                        if (!pwd.test(Password)) {
+                            $('#PwdMsg').text("*密码的长度为6~16个字符。");
+                        } else {
+                            $('#PwdMsg').text("");
+                        }
+                        if (Password != ConfirmPassword) {
+                            $('#ConfirmPwdMsg').text("*两次输入的密码不一致。");
+                        } else {
+                            $('#ConfirmPwdMsg').text("");
+                        }
+                        if (InputVerificationCode == "") {
+                            $('#VerificationCodeMsg').text("*请输入验证码");
+                        } else {
+                            $('#VerificationCodeMsg').text("");
+                        }
+
+                        if (reg.test(UserEmail) && pwd.test(Password) && Password == ConfirmPassword && InputVerificationCode != "") {
+                            $.ajax({
+                                url: '/Access/ForgetThePwdPost',
+                                type: 'POST',
+                                data: {
+                                    UserEmail: $('#UserEmail').val(),
+                                    Password: $('#Password').val(),
+                                    InputVerificationCode: $('#InputVerificationCode').val()
+                                },
+                                success: function (msg) {
+                                    if (msg == -101) {
+                                        $('#VerificationCodeMsg').text("*验证码错误");
+                                    }
+                                    if (msg == 0) {
+                                        alert("恭喜您成功找回了密码！")
+                                        window.location.href = "Login";
+                                    }
+                                    //alert(msg)
+                                }
+                            });                        }
+
+                    }
+                </script>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -26,6 +26,19 @@ namespace MicroBlogWebsite.Controllers
         /// OmmBll 他人微博页面微博文章管理类
         /// </summary>
         private BLL.OthersMicrobolgManager OmmBll = new OthersMicrobolgManager();
+        /// <summary>
+        /// 评论
+        /// </summary>
+        private BLL.CommentManager CemBll = new CommentManager();
+        /// <summary>
+        /// 好友
+        /// </summary>
+        private BLL.GoodFriendManager Gfm = new GoodFriendManager();
+        /// <summary>
+        /// 好友分组
+        /// </summary>
+        private BLL.GroupingManager Gm = new GroupingManager();
+
         //
         // GET: /Home/
         /// <summary>
@@ -120,6 +133,9 @@ namespace MicroBlogWebsite.Controllers
         }
 
 
+
+        //=================================================================个人中心====================================================================//
+
         /// <summary>
         /// 个人中心，个人信息=>用户的个人自己的信息，自定义信息。（杨洲）
         /// </summary>
@@ -128,6 +144,8 @@ namespace MicroBlogWebsite.Controllers
         {
             if (Session["User_Login"] != null)//登录成功
             {
+                //暂时给个id
+                //Tana_UserInfo userinfo = db.Tana_UserInfo.Find(1);
                 return View();
             }
             else
@@ -136,6 +154,31 @@ namespace MicroBlogWebsite.Controllers
             }
         }
 
+
+        //修改的方法  FormCollection Form 通过表单集合拿值 注意name
+        [HttpPost]
+        public ActionResult index(DTO.UserInfoDto ta, FormCollection Form)//测试传值
+        {
+            ViewBag.a = ta.Id;
+            ViewBag.b = ta.UserName;
+            ViewBag.c = ta.UserEmail;
+            ViewBag.d = ta.UserAutograph;
+            ViewBag.e = ta.UserSex;
+            //通过name拿值
+            ViewBag.f = Form["UserRegion"];  
+            ViewBag.g = Form["UserRegion2"];
+
+            ViewBag.l = Form["year"];
+            ViewBag.m = Form["moth"];
+            ViewBag.n = Form["day"];
+
+
+            ViewBag.w = Form["UserPassword2"];
+
+            return View();
+        }
+
+        //=================================================================个人中心====================================================================//
 
 
 

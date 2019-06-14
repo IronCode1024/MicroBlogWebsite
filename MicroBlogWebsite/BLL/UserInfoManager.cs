@@ -53,6 +53,19 @@ namespace BLL
         }
 
 
+        /// <summary>
+        /// 找回密码方法
+        /// </summary>
+        /// <param name="whereLambda"></param>
+        /// <returns></returns>
+        public int ForgetThePwd(DTO.UserInfoDto Uidto)
+        {
+            var uifSvc = new DAL.UserInfoService();
+            //根据邮箱修改密码
+            return uifSvc.ForgetThePwd(Uidto);
+        }
+
+
 
 
         /// <summary>
@@ -95,5 +108,12 @@ namespace BLL
             var PopularUserEntity = uifSvc.GetPopularUser();
             return PopularUserEntity;
         }
+
+
+
+        //================================编辑资料开始=====================================//
+
+
+        //================================编辑资料结束=====================================//
     }
 }

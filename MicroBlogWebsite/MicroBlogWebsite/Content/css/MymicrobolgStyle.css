@@ -246,7 +246,7 @@ ul li.xiala:hover #twobar {
 }
 
 .mindsearch {
-    margin-left: 180px;
+    margin-left: 30px;
     /*line-height:130px;*/
     /*border:1px solid black;*/
     margin-top: 0px;
@@ -265,6 +265,25 @@ ul li.xiala:hover #twobar {
     background-color: #fff;
     border-radius: 10px;
 }
+
+
+
+
+/*---------------------------------------------------发布微博框样式开始-----------------------------------------------------------*/
+.PublishWeibo {
+    margin-top:10px;
+    border:1px solid red;
+    width: 868px;
+    height:800px;
+}
+/*---------------------------------------------------发布微博框样式结束-----------------------------------------------------------*/
+
+
+
+
+
+
+
 
 /*我的微博*/
 .mindmicroblog {

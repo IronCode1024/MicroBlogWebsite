@@ -29,14 +29,15 @@ namespace Models.Migrations
                 new UserInfo { Id = 8, UserName = "托尼8", UserEmail = "gfdgfgdfg@qq.com", UserPassword = "1234343343456", UserBirthday = Convert.ToDateTime("1999/11/10"), UserRegion = "河北石家庄", UserHeadPortrait = "/Content/images/UserImg/HeadPortrait/8.jpg", UserAutograph = "I am IronMan8", States = false },
                 new UserInfo { Id = 9, UserName = "托尼9", UserEmail = "gfdg@qq.com", UserPassword = "435434535", UserBirthday = Convert.ToDateTime("1997/06/12"), UserRegion = "山东济南", UserHeadPortrait = "/Content/images/UserImg/HeadPortrait/9.jpg", UserAutograph = "I am IronMan9", States = false },
                 new UserInfo { Id = 10, UserName = "托尼10", UserEmail = "fddgtrg@qq.com", UserPassword = "534536534", UserBirthday = Convert.ToDateTime("1999/1/1"), UserRegion = "江苏南京", UserHeadPortrait = "/Content/images/UserImg/HeadPortrait/10.jpg", UserAutograph = "I am IronMan10" }
-
                 );
 
             context.GoodFriend.AddOrUpdate<GoodFriend>(
                 new GoodFriend { Id = 1, MyUserID = 1, FollowUserID = 2, CreateTime = DateTime.Now, FriendRemarks = "", AitemeUserID = null },
                 new GoodFriend { Id = 2, MyUserID = 1, FansUserID = 2, CreateTime = DateTime.Now, FriendRemarks = "", AitemeUserID = null },
                 new GoodFriend { Id = 3, MyUserID = 2, FollowUserID = 1, CreateTime = DateTime.Now, FriendRemarks = "", AitemeUserID = null },
-                new GoodFriend { Id = 4, MyUserID = 2, FansUserID = 1, CreateTime = DateTime.Now, FriendRemarks = "", AitemeUserID = null }
+                new GoodFriend { Id = 4, MyUserID = 2, FansUserID = 1, CreateTime = DateTime.Now, FriendRemarks = "", AitemeUserID = null },
+                new GoodFriend { Id = 5, MyUserID = 2, FansUserID = 1, CreateTime = DateTime.Now, FriendRemarks = "", AitemeUserID = null },
+                new GoodFriend { Id = 6, MyUserID = 2, FansUserID = 1, CreateTime = DateTime.Now, FriendRemarks = "", AitemeUserID = null }
                 );
 
             context.MicroBlog.AddOrUpdate<MicroBlog>(

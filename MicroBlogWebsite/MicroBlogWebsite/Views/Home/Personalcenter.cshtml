@@ -1,10 +1,154 @@
-﻿@{
+﻿@model DTO.UserInfoDto
+
+@{
     ViewBag.Title = "个人中心";
     Layout = "~/Views/shared/_LayoutHome.cshtml";
 }
 
 @section Head{    @*head文件*@
+<script src="~/Scripts/EasyUI/jquery-1.11.0.min.js"></script>
+<link href="~/Content/css/PersonalcenterStyle.css" rel="stylesheet" />
 
+    <style type="text/css">
+        .UserEditBox {
+            width:200px;
+            height:30px;
+        }
+    </style>
+<script type="text/javascript">
+
+
+    var shengarr = ["湖北", "湖南", "广东"];
+    var city = [["武汉", "荆州", "仙桃", "恩施"], ["长沙", "湘潭", "岳阳", "韶山"], ["东莞", "广州", "佛山", "汕头"]];
+    function insertfun() {
+        var vsheng = document.getElementById("UserRegion");//找到省的下拉框
+        for (var i = 0; i < shengarr.length; i++) {
+            var opp = document.createElement("option");
+
+            opp.innerHTML = shengarr[i];
+            opp.value = shengarr[i]; //value 是不会在前端显示出来的 和winform中的tag属性有点类似   程序员可以通过它去取到对应的内容
+            vsheng.appendChild(opp);
+        }
+        insertcityfun();
+    }
+    function insertcityfun() {
+
+        var id = document.getElementById("UserRegion").value;
+        //很贱的地方
+        var s;
+        for (var i = 0; i < 3; i++) {
+            if (shengarr[i] == id) {
+                s = i;
+                break;
+            }
+        }
+
+        var vshi = document.getElementById("UserRegion2");
+        vshi.options.length = 0;
+        var cityarr = city[parseInt(i)];
+        for (var i = 0; i < cityarr.length; i++) {
+            var cpp = document.createElement("option");
+            cpp.innerHTML = cityarr[i];
+            cpp.value = cityarr[i];
+            vshi.appendChild(cpp);
+        }
+        //alert(id);
+    }
+
+
+
+
+    $(function () {
+        $(".fourdiv>div").eq(0).show().siblings().hide();
+        $(".sixdiv>div").eq(0).show().siblings().hide();
+
+        //默认给两个多选的第一个加的样式
+        $(".button_u>li ").eq(0).addClass("active").siblings().removeClass("active");
+        $(".xuan_u>li").eq(0).addClass("active").siblings().removeClass("active");
+        //第一个多选的点击事件
+        $(".button_u>li").click(function () {
+            //$(this).addClass("active").siblings().removeClass("active");
+
+            var index = $(this).index();
+            //点击后字体变颜色
+            $(".button_u>li ").eq(index).addClass("active").siblings().removeClass("active");
+
+
+            //alert(index);
+            $(".fourdiv>div").eq(index).show().siblings().hide();
+        })
+
+        //第二个多选的点击事件
+        $(".xuan_u>li ").click(function () {
+            //$(this).addClass("active").siblings().removeClass("active");
+            var index = $(this).index();
+            //有问题的部分
+            var index1 = index;
+
+            if (index == 0) {
+                index == index
+            }
+            else {
+                index = index / 2;
+            }
+            $(".xuan_u>li").eq(index1).addClass("active").siblings().removeClass("active");
+            alert(index);
+            $(".sixdiv>div").eq(index).show().siblings().hide();
+        })
+
+
+        //加载省
+        insertfun()
+
+        //更改密码的一个小验证，确保两次密码一样
+        $("#UserPassword2").blur(function () {
+            var password1 = $("#UserPassword2").val();
+            if (password1.length >= 4 && password1.length <= 30) {
+                $("#ti1").text("*格式正确");
+            }
+            else {
+                $("#ti1").text("长度应在4-30个字符之间");
+                alert(password1);
+                return false;
+            }
+
+        })
+        $(".dian").click(function () {
+            //用name拿不到值
+            var password1 = $("#UserPassword2").val();
+            var password2 = $("#UserPassword3").val();
+            if (password1 == password2) {
+
+                $("#ti2").text("*格式正确");
+            }
+            else {
+                $("#ti2").text("两次输入的密码不一致，请从新输入");
+                return false;
+            }
+        })
+
+
+        var lu = ["/Content/images/1.jpg", "/Content/images/3.jpg", "/Content/images/3.jpg"];
+        var a = 0;
+        function qhuan() {
+            a++;
+            var next = document.getElementById("tu");
+            tu.src = lu[a];
+            if (a == 3) {
+                a = 0;
+
+            }
+        }
+
+
+
+
+    });
+
+
+
+
+</script>
 }
 
 <!--用户头像背景图片-->
@@ -14,6 +158,9 @@
             background-image: url(/content/images/UserImg/mymicrobolg/handimg.jpg);
         }
     </style>
+
+
+
 }
 <!--用户头像-->
 @section HeadPortrait{
@@ -23,3 +170,278 @@
 @section ReplaceSkin{
     <img src="/content/images/LayoutHome/updatebg.png" height="20" /><span>更换皮肤</span>
 }
+
+<div id="" class="" style="width: 1300px; height: 100%; margin: 0px auto;background-color:#fff; ">
+    <div class="center">
+
+        <div class="button">
+            <ul class="button_u">
+                <li><a>个人资料</a></li>
+                <li><a>修改头像</a></li>
+                <li><a>隐私设置</a></li>
+                <li><a>个性设置</a></li>
+            </ul>
+        </div>
+
+        <div class="fourdiv">
+            <div class="button_1">
+                <div class="xuan">
+                    <ul class="xuan_u">
+                        <li><a>基本信息</a></li>
+                        <li class="su"><span>|</span></li>
+                        <li><a>修改密码</a></li>
+                        <li class="su"><span>|</span></li>
+                        <li><a>教育信息</a></li>
+                        <li class="su"><span>|</span></li>
+                        <li><a>职业信息</a></li>
+                        <li class="su"><span>|</span></li>
+                        <li><a>个人标签</a></li>
+                        <li class="su"><span>|</span></li>
+                        <li><a>个性域名</a></li>
+                    </ul>
+
+                </div>
+                <div class="sixdiv">
+                    <div class="sixdiv1">
+
+
+
+                        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+
+                            <table style="font-size: 20px;" class="sixdiv1_t">
+                                <tr>
+                                    <td style="border: 1px solid black; text-align: right">登录名：</td>
+                                    <td>
+                                        <label> @Html.TextBoxFor(a => a.UserName, new { @class="UserEditBox" }) </label>
+                                    </td>
+                                    <td>   @Html.HiddenFor(a => a.Id)</td>
+                                </tr>
+                                <tr style="border: 1px solid black; height: 50px;">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid black; text-align: right">邮箱名：</td>
+                                    <td style="border: 1px solid black">
+                                        <label> @Html.TextBoxFor(a => a.UserEmail, new { @class = "UserEditBox" }) </label>
+                                    </td>
+                                    <td> </td>
+                                </tr>
+                                <tr style="border: 1px solid black; height: 50px;">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right">所在地：</td>
+                                    <td>
+                                        <select id="UserRegion" name="UserRegion" style="height: 30px; width: 105px;" onchange="insertcityfun()"></select>
+                                        <select id="UserRegion2" name="UserRegion2" style="height: 30px; width: 105px;"></select>
+                                        <script>
+
+                                        </script>
+
+                                    </td>
+                                </tr>
+                                <tr style="border: 1px solid black; height: 50px;">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right">
+                                        &nbsp;&nbsp;
+                                        性别：
+                                    </td>
+                                    <td>
+                                        <label>
+
+                                            <input type="radio" value="男" name="usersex" checked />男
+                                        </label>
+                                        <label>
+                                            <input type="radio" value="女" name="usersex" />女
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr style="border: 1px solid black; height: 50px;">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right">&nbsp;&nbsp;生日：  </td>
+                                    <td>
+                                        <select name="year" style="height: 30px; width: 55px;">
+                                            <option value="1999" selected>1999</option>
+                                            <option value="2000">2000</option>
+                                            <option value="2001">2001</option>
+                                            <option value="2002">2002</option>
+                                            <option value="2003">2003</option>
+                                            <option value="2004">2004</option>
+                                            <option value="2005">2005</option>
+                                            <option value="2006">2006</option>
+                                            <option value="2007">2007</option>
+                                            <option value="2008">2008</option>
+                                            <option value="2009">2009</option>
+                                            <option value="2010">2010</option>
+                                            <option value="2011">2011</option>
+                                            <option value="2012">2012</option>
+                                            <option value="2013">2013</option>
+                                            <option value="2014">2014</option>
+                                            <option value="2015">2015</option>
+                                            <option value="2016">2016</option>
+                                            <option value="2017">2017</option>
+                                            <option value="2018">2018</option>
+                                            <option value="2019">2019</option>
+                                        </select>年
+                                        <select name="moth" style="height: 30px; width: 55px;">
+                                            <option value="1" selected>1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                        </select>月
+                                        <select name="day" style="height: 30px; width: 55px;">
+                                            <option selected>1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                            <option value="25">25</option>
+                                            <option value="26">26</option>
+                                            <option value="27">27</option>
+                                            <option value="28">28</option>
+                                            <option value="29">29</option>
+                                            <option value="30">30</option>
+                                        </select>日
+                                    </td>
+                                </tr>
+                                @*     <tr style="border: 1px solid black; height: 50px;">
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: right">联系邮箱：	</td>
+                                        <td>
+                                            <input type="text" id="email" value="" style="height: 30px" />
+                                            @Html.TextBox("UserEmail")
+                                        </td>
+                                    </tr>*@
+                                <tr style="border: 1px solid black; height: 50px;">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right">个人描述：</td>
+                                    <td>
+
+                                        @Html.TextArea("UserAutograph")
+                                    </td>
+                                </tr>
+                                <tr style="border: 1px solid black; height: 50px;">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right">
+                                        <input type="submit" value="保存" style="width: 100px; height: 40px; font-size: 23px">
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+
+
+                        }
+
+
+                    </div>
+
+                    <div class="sixdiv2">
+                        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+
+                            //string mima= "";
+                            //foreach (Tana_UserInfo item in Model)
+                            //{
+                            //   mima = item.UserPassword;
+                            //}
+
+                            <table style="border: 1px solid black">
+                                <tr style="border: 1px solid black">
+                                    <td style="width: 300px; height: 150px; border: 1px solid black; text-align: right; font-size: 21px;">初始密码：</td>
+                                    <td style="border: 1px solid red">
+                                        <label>@Html.TextBoxFor(a => a.UserPassword) </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 200px; height: 150px; text-align: right; font-size: 21px;">新密码：</td>
+                                    <td>@Html.TextBox("UserPassword2")</td>
+                                    <td style="width: 180px; color: blue">
+                                        <label style="color:red;font-size:11px" id="ti1"></label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 200px; height: 150px; text-align: right; font-size: 21px;">确认密码：</td>
+                                    <td>@Html.TextBox("UserPassword3")</td>
+                                    <td style="width: 150px; border: 1px solid black;">
+                                        <label style="color: red; font-size: 11px" id="ti2"></label>
+                                    </td>
+                                </tr>
+
+                                <tr style="border: 1px solid red">
+                                    <td></td>
+                                    <td style="border: 1px solid red; height: 50px">
+                                        <input type="submit" value="保存" class="dian" />
+                                    </td>
+                                </tr>
+                            </table>
+                        }
+                    </div>
+                    <div class="sixdiv3">该板块暂未使用3</div>
+                    <div class="sixdiv3">该板块暂未使用4</div>
+                    <div class="sixdiv3">该板块暂未使用5</div>
+                    <div class="sixdiv3">该板块暂未使用6</div>
+                </div>
+            </div>
+
+            <div class="button_3">
+                <div class="left"><img src=".@Html.TextBoxFor(a => a.UserHeadPortrait)" /></div>
+
+
+                <div class="right">
+                    <img src="img/1.jpg" id="tu" />
+
+                </div>
+                <div class="huan"><input type="button" value="换一张" id="hy" /></div>
+                <div class="bao"><input type="button" value="保存" /></div>
+            </div>
+            <div class="button_2">该板块暂未使用3</div>
+            <div class="button_2">该板块暂未使用4</div>
+        </div>
+
+    </div>
+</div>

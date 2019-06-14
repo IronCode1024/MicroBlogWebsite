@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    class GroupingManager
+    public class GroupingManager
     {
     }
 }

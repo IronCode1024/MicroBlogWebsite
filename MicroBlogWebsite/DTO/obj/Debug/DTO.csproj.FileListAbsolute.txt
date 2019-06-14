@@ -2,4 +2,3 @@ F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\DTO
 F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\DTO\bin\Debug\DTO.pdb
 F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\DTO\obj\Debug\DTO.dll
 F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\DTO\obj\Debug\DTO.pdb
-F:\VS项目源码文件\踏浪微博网项目\Project Files\MicroBlogWebsite\DTO\obj\Debug\DTO.csprojResolveAssemblyReference.cache

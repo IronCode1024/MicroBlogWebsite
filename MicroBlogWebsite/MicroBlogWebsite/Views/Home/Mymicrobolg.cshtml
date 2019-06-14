@@ -6,21 +6,29 @@
 @section Head{    @*head文件*@
 <link href="~/Content/css/MymicrobolgStyle.css" rel="stylesheet" />
 <script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/EasyUI/jquery.easyui.min.js"></script>
+<script src="~/Scripts/EasyUI/locale/easyui-lang-zh_CN.js"></script>
+<link href="~/Scripts/EasyUI/themes/default/easyui.css" rel="stylesheet" />
+<link href="~/Scripts/EasyUI/themes/icon.css" rel="stylesheet" />
 <script type="text/javascript">
 
     $(function () {
         window.onscroll = function () {
             var t = document.documentElement.scrollTop || document.body.scrollTop;
             var fi = document.getElementById("minddbarul");
-            if (t >= 725) {
+            if (t >= 500) {
                 fi.style.position = "absolute";
-                fi.style.top = t - 710 + "px";
+                fi.style.top = t - 490 + "px";
             }
         }
+
+
+
         //Dian();
 
 
     });
+
     function dels(i) {
         //if ($("#twoinfor").css("display") == 'block') {
 
@@ -55,8 +63,13 @@
             ff.style.display = "none";
             index = 0;
         }
+    }
 
+    
 
+    //发布微博 窗口
+    function PublishWeibo() {
+        $('#p').window("open")
     }
 </script>
 
@@ -78,8 +91,6 @@
 @section ReplaceSkin{
     <img src="/content/images/LayoutHome/updatebg.png" height="20" /><span>更换皮肤</span>
 }
-
-
 
 
 <div id="MyBody" class="" style="width: 1300px; height: 100%; margin: 0px auto;">
@@ -136,6 +147,7 @@
 
 
             <div id="mindds" class="mindd">
+
                 <div id="minddbar">
                     <div id="minddbarl">
                         <!--全部  热门   更多-->
@@ -152,6 +164,7 @@
                                     <li><a href="#">音乐</a></li>
                                 </ul>
                             </li>
+                            @*<li class="ac"><a style="cursor:pointer" onclick="PublishWeibo()">发布微博</a></li>*@
                             <li class="mindsearch">
                                 <input type="text" id="mindtxt" />
                                 <input type="button" value="搜索" id="mindbtn" />
@@ -160,6 +173,20 @@
 
                     </div>
                 </div>
+                <!--////////////////////////////////////////////////////////////////////---发布微博框开始---///////////////////////////////////////////////////////////////////////////-->
+                <div id="PublishWeiboId" class="PublishWeibo">
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#PublishWeiboId').load("/Scripts/umeditor1_2_2-utf8-net/index.html");
+                        })
+                        
+                        //$(".headerPage").load("HeaderPage.aspx");//引用页眉
+                    </script>
+                </div>
+
+                <!--////////////////////////////////////////////////////////////////////---发布微博框结束---///////////////////////////////////////////////////////////////////////////-->
+
+
                 @for (int i = 1; i <= 6; i++)
                 {
                     <div class="mindmicroblog">

@@ -17,7 +17,6 @@ namespace MicroBlogWebsite.Model
 
         [Required(ErrorMessage = "*密码不能为空")]
         public string Password { get; set; }  //用户密码
-
         
         public bool RememberPwd { get; set; }
     }

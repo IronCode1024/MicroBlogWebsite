@@ -44,6 +44,21 @@ namespace DAL
 
 
         /// <summary>
+        /// 找回密码方法
+        /// </summary>
+        /// <param name="whereLambda"></param>
+        /// <returns></returns>
+        public int ForgetThePwd(DTO.UserInfoDto Uidto)
+        {
+            //根据邮箱修改密码
+            var ForgetThePwdEntity = DbContexts.UserInfo.Where(p => p.UserEmail == Uidto.UserEmail).First();
+            ForgetThePwdEntity.UserPassword = Uidto.UserPassword;
+            int i = DbContexts.SaveChanges();
+            return i;
+        }
+
+
+        /// <summary>
         /// 按最近时间获取用户头像    新加入用户
         /// </summary>
         /// <param name="Uidto"></param>
@@ -86,6 +101,13 @@ namespace DAL
             return PopularUserEntity;
         }
 
+
+
+
+        //================================编辑资料开始=====================================//
+
+
+        //================================编辑资料结束=====================================//
 
     }
 }

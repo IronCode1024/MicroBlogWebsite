@@ -8,6 +8,7 @@ namespace DTO
 {
     public class MicroBlogAndUserInfDto
     {
+        public int MicroBlogID { get; set; }//Id  微博ID
         public int UserID { get; set; }//UserID  外键（UserInfo）
         public string Title { get; set; }//标题
         public string Content_text { get; set; }//内容（文本）

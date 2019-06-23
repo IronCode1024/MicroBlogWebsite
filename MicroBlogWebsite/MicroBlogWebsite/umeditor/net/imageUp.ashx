@@ -1,5 +1,4 @@
 <%@ WebHandler Language="C#" Class="imageUp" %>
-<%@ Assembly Src="Uploader.cs" %>
 
 using System;
 using System.Web;

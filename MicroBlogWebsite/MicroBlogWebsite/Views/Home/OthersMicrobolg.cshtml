@@ -67,8 +67,85 @@
         </div>
     </div>
 
-
     <div id="centerBox" class="centerBox">
+        @{
+            int numt = 0;
+            foreach (DTO.MicroBlogAndUserInfDto item in ViewBag.listOtherBlog)
+            {
+                numt += 1;
+                <div class="mbArticleBox" style="border:1px solid red;margin-bottom:20px">
+                    <div class="mbArticleBoxSon">
+                        <div class="mbArticleLeft">
+                            <!--用户头像和用户名展示-->
+                            <div style="height:42px;line-height:50px;">
+                                <a href="/Home/OthersMicrobolg?user=@item.UserID"><img class="UserHeadImg" src="@item.UserHeadPortrait" align="left" style="width: 40px;height: 40px;" /></a>
+                                <span style="font-size:25px;">&nbsp;&nbsp;@item.UserName</span>
+                            </div>
+                            <br />
+                            <div class="UserHeadDiv">
+
+                                <span class="UserNameSpan">@item.CreateTime.Year 年 @item.CreateTime.Month 月 @item.CreateTime.Day 日</span>
+                            </div>
+
+                            <div style="margin-top:10px;"><a class="titleCenter" href="/Home/OthersMicrobolg?user=@item.UserID"><p style="font-size:18px;">@item.Title </p></a></div>
+
+
+                            <!--微博正文  包含文字、图片、视频-->
+                            <div id="mbtext @numt" style="border: 1px solid red;width:670px; margin-top: 20px; font-size: 15px; overflow: hidden" class="wb_content">
+                                <style type="text/css">
+                                    .wb_content img {
+                                        padding-right: 20px;
+                                        padding-top: 15px;
+                                        float: left;
+                                        width: 200px;
+                                        height: 200px;
+                                    }
+                                </style>
+                                @{
+                string str = item.Content_text;//此变量存储最终要显示的标题
+                //if (item.Content_text.Length > 50)
+                //{
+                //    str = item.Content_text.Substring(0, 50) + "......";//从0开始,截取8位
+                //}
+                //else
+                //{
+                //    str = item.Content_text;//如果小于等于8位,则不变
+                //}
+                @*<script type="text/javascript">
+                    document.getElementById('mbtext @numt').innerHTML = '@Html.Raw(@str)';
+                </script>*@
+                                }
+                                @Html.Raw(@str)
+                            </div>
+
+
+
+                            <!--下面的时间和转发点赞评论等-->
+                            <div style="margin-top:20px;">
+
+
+                                <!--点赞评论转发-->
+                                <div class="zfpldz">
+                                    <a href="#"><span class="zf"><span style="margin-left:20px;">36592</span></span></a>
+                                    <a href="#">
+                                        <span class="pl"><span style="margin-left:20px;">2354</span></span>
+                                    </a>
+                                    <a href="#"><span class="dz"><span style="margin-left:20px;">@item.Points_number</span></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        @*<a href="#">
+                                <div class="mbArticleRight">
+                                    <img class="mbArticleRightImg" src="@item.Content_img" />
+                                </div>
+                            </a>*@
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+    @*<div id="centerBox" class="centerBox">
         @{
             foreach (DTO.MicroBlogAndUserInfDto item in ViewBag.listOtherBlog)
             {
@@ -117,7 +194,7 @@
                 </div>
             }
         }
-    </div>
+    </div>*@
 
 </body>
 </html>

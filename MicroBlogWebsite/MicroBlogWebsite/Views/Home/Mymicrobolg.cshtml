@@ -10,24 +10,62 @@
 <script src="~/Scripts/EasyUI/locale/easyui-lang-zh_CN.js"></script>
 <link href="~/Scripts/EasyUI/themes/default/easyui.css" rel="stylesheet" />
 <link href="~/Scripts/EasyUI/themes/icon.css" rel="stylesheet" />
+
+<link href="~/umeditor/themes/default/css/umeditor.css" rel="stylesheet" />
+<script src="~/umeditor/third-party/jquery.min.js"></script>
+<script src="~/umeditor/umeditor.config.js"></script>
+<script src="~/umeditor/umeditor.js"></script>
+<script src="~/umeditor/lang/zh-cn/zh-cn.js"></script>
+
 <script type="text/javascript">
-
+    //富文本框编辑器
+    //实例化编辑器
     $(function () {
-        window.onscroll = function () {
-            var t = document.documentElement.scrollTop || document.body.scrollTop;
-            var fi = document.getElementById("minddbarul");
-            if (t >= 500) {
-                fi.style.position = "absolute";
-                fi.style.top = t - 490 + "px";
-            }
-        }
+        window.um = UM.getEditor('container', {
+            /* 传入配置参数,可配参数列表看umeditor.config.js */
+            //toolbar: ['undo redo | bold italic underline', 'emotion']
+            toolbar: [
+                'source | undo redo | bold italic underline strikethrough | superscript subscript | forecolor backcolor | removeformat |',
+                'insertorderedlist insertunorderedlist | selectall cleardoc paragraph | fontfamily fontsize',
+                '| justifyleft justifycenter justifyright justifyjustify |',
+                'link unlink | emotion image video  | map',
+                '| horizontal print preview fullscreen', 'drafts', 'formula'
+            ]
+        });
 
+        //um.getEditor('editor', { autoFloatEnabled: false });
 
+        /* 设置编辑器内容 */
 
-        //Dian();
-
-
+        //um.setContent('要设置的编辑器内容.');
+        //um.setContent('这里写你的内容：');
     });
+
+    //全部  热门   更多固定导航条
+    //window.onscroll = function () {
+    //    var t = document.documentElement.scrollTop || document.body.scrollTop;
+    //    var fi = document.getElementById("minddbar");
+    //    if (t >= 500) {
+    //        fi.style.position = "absolute";
+    //        fi.style.top = t - 490 + "px";
+    //    }
+    //}
+    window.onscroll = function () {
+        var t = document.documentElement.scrollTop || document.body.scrollTop;
+
+        var fi = document.getElementById("minddbar");
+        if (t >= 513) {
+            //alert(t);
+            fi.style.position = "absolute";
+            //fi.style.left = "733px";
+            fi.style.top = t + "px";
+        }
+        else {
+            fi.style.position = "absolute";
+            //fi.style.left = "735x";
+            fi.style.top = "513px";
+        }
+    }
 
     function dels(i) {
         //if ($("#twoinfor").css("display") == 'block') {
@@ -65,12 +103,39 @@
         }
     }
 
-    
 
-    //发布微博 窗口
-    function PublishWeibo() {
-        $('#p').window("open")
+
+    //发布微博 窗口 //发布微博按钮点击
+    function getContents() {
+        
+        /* 获取编辑器内容   带HTML格式*/
+        var html = um.getContent();
+        //alert(html)
+
+        //document.getElementById('ss').innerHTML = html;
+
+
+        $.ajax({
+            type: 'POST',
+            url: '/Home/PublishWeibo',
+            data: {
+                PublishWeiboHtml: html
+            },
+            success: function (msg) {
+                if (msg > 0) {
+                    alert("发布成功！")
+                    window.location = location;
+                }
+            }
+        });
     }
+    //function getContentTxts() {
+    //    /* 获取编辑器内容 纯文本格式*/
+    //    var txt = um.getContentTxt();
+    //    alert(txt)
+    //    //document.getElementById('ss').innerHTML = txt;
+    //}
+
 </script>
 
 }
@@ -95,7 +160,7 @@
 
 <div id="MyBody" class="" style="width: 1300px; height: 100%; margin: 0px auto;">
     <div style="height:auto;">
-        
+
         <div style="overflow: hidden; height: auto">
             <div id="left">
                 <div id="leftk">
@@ -135,12 +200,17 @@
                         <p>最近关注</p>
                     </div>
                     <ul>
-                        <li title="最近关注用户1"><a href="#"></a></li>
-                        <li title="最近关注用户2"><a href="#"></a></li>
-                        <li title="最近关注用户2"><a href="#"></a></li>
-                        <li title="最近关注用户2"><a href="#"></a></li>
-                        <li title="最近关注用户2"><a href="#"></a></li>
-                        <li title="最近关注用户2"><a href="#"></a></li>
+                        @foreach (DTO.UserInfoAndGoodFriendDto item in ViewBag.listUserFriend)
+                        {
+                            <li title="@item.UserName"><a href="#"><img style="width: 80px; height: 80px; border-radius: 50% 50%; " src="@item.UserHeadPortrait" /></a></li>
+                        }
+
+                        @*<li title="最近关注用户1"><a href="#"></a></li>
+                            <li title="最近关注用户2"><a href="#"></a></li>
+                            <li title="最近关注用户2"><a href="#"></a></li>
+                            <li title="最近关注用户2"><a href="#"></a></li>
+                            <li title="最近关注用户2"><a href="#"></a></li>
+                            <li title="最近关注用户2"><a href="#"></a></li>*@
                     </ul>
                 </div>
             </div>
@@ -148,7 +218,7 @@
 
             <div id="mindds" class="mindd">
 
-                <div id="minddbar">
+                <div id="minddbar" style="margin-bottom:-70px;">
                     <div id="minddbarl">
                         <!--全部  热门   更多-->
 
@@ -173,71 +243,109 @@
 
                     </div>
                 </div>
+
+                <br /><br /><br />
                 <!--////////////////////////////////////////////////////////////////////---发布微博框开始---///////////////////////////////////////////////////////////////////////////-->
                 <div id="PublishWeiboId" class="PublishWeibo">
-                    <script type="text/javascript">
-                        $(function () {
-                            $('#PublishWeiboId').load("/Scripts/umeditor1_2_2-utf8-net/index.html");
-                        })
-                        
-                        //$(".headerPage").load("HeaderPage.aspx");//引用页眉
-                    </script>
-                </div>
+                    <script id="container" name="content" type="text/plain" style="width: 865px; height: 300px;">
 
+                    </script>
+                    <div style="background-color:#fff;border-top:2px solid red;">
+                        @*<button onclick="getContentTxts()" class="">获取TXT</button>*@
+                        <button onclick="getContents()" class="PublishWeibobtn">发布</button>
+                    </div>
+
+                </div>
+                @*<div id="ss"></div>*@
                 <!--////////////////////////////////////////////////////////////////////---发布微博框结束---///////////////////////////////////////////////////////////////////////////-->
 
 
-                @for (int i = 1; i <= 6; i++)
+                <!--////////////////////////////////////////////////////////////////////---微博文章展示框开始---///////////////////////////////////////////////////////////////////////////-->
+                @foreach (DTO.MicroBlogAndUserInfDto item in ViewBag.listUserMicroBlog)
                 {
+
                     <div class="mindmicroblog">
                         <div class="microblogtop">
                             <!--用户头像-->
                             <div class="tophadnimg">
-                                <img src="~/Content/images/Mymicrobolg/handimgmax.jpg" />
+                                <img src="@item.UserHeadPortrait" />
                             </div>
                             <div class="topinfor">
                                 <ul>
-                                    <li class="topname"><a href="#">现在我是喻文波的狗</a></li>
+                                    <li class="topname"><a href="#">@item.UserName</a></li>
                                     <li>
-                                        2019年5月31 12:35
+                                        @item.CreateTime
                                     <li>
                                 </ul>
                             </div>
-                            <div id="del_@i" class="dels" onclick="dels(this)">
+                            <div id="del_@item.MicroBlogID" class="dels" onclick="delss(this)" ondblclick="remove(this)">
                             </div>
-                            <div id="twoinfor_@i" class="twoinfors">
+                            <div id="twoinfor_@item.MicroBlogID" class="twoinfors">
                                 <ul>
-                                    <li><a href="#">删除</a></li>
+                                    <li><a href="#" onclick="Deletes( @item.MicroBlogID)">删除</a></li>
                                     <li><a href="#">编辑</a></li>
                                     <li><a href="#">收藏</a></li>
                                 </ul>
                             </div>
-
                         </div>
-                        <div class="microblogmid"></div>
 
-                        <div class="microblogbtm">
-                            <ul>
-                                @*<ul>
-                <li><a href="#">( ′▽` )?转发</a></li>
-                <li><a href="#">???( ??? )???评论</a></li>
-                <li><a href="#">(￣▽￣)／赞</a></li>
-            </ul>*@
-                                <li><a href="#"><span class="zf"><span style="margin-left:20px;padding-left:6px">36592</span></span></a></li>
-                                <li>
-                                    <a href="#">
-                                        <span class="pl"><span style="margin-left: 20px; padding-left: 6px">2354</span></span>
-                                    </a>
-                                </li>
-                                <li><a href="#"><span class="dz"><span style="margin-left: 20px; padding-left: 6px">23</span></span></a></li>
-                            </ul>
-</div>
+                        @*判断用户微博中的数据*@
+                        <div id="mbtext" style="margin-left:20px;width:670px; margin-top: 20px; font-size: 15px; overflow: hidden" class="wb_content">
+                            <style type="text/css">
+                                .wb_content img {
+                                    padding-right: 20px;
+                                    padding-top: 15px;
+                                    float: left;
+                                    width: 200px;
+                                    height: 200px;
+                                }
+                            </style>
+                            @Html.Raw(item.Content_text)
+                            /div>
+                            @*if (item.Content_text != null && item.Content_img == null && item.Content_video == null)
+                                {
+                                    <div class="microblogmid">
+                                        @item.Content_text
+                                    </div>
+                                }
+                                else if (item.Content_text != null && item.Content_img != null && item.Content_video == null)
+                                {
+                                    <div class="microblogmid">
+                                        @item.Content_text
+                                        <img src="@item.Content_img" />
+                                    </div>
+                                }
+                                else if (item.Content_text != null && item.Content_img == null && item.Content_video != null)
+                                {
+                                    <div class="microblogmid">
+                                        @item.Content_text
+                                        <video controls="controls" src="@item.Content_video"></video>
+                                    </div>
+                                }*@
 
+                            <div class="microblogbtm">
+                                <ul>
+                                    @*<ul>
+                                            <li><a href="#">( ′▽` )?转发</a></li>
+                                            <li><a href="#">???( ??? )???评论</a></li>
+                                            <li><a href="#">(￣▽￣)／赞</a></li>
+                                        </ul>*@
+                                    <li><a href="#"><span class="zf"><span style="margin-left:20px;padding-left:6px">36592</span></span></a></li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="pl"><span style="margin-left: 20px; padding-left: 6px">2354</span></span>
+                                        </a>
+                                    </li>
+                                    <li><a href="#"><span class="dz"><span style="margin-left: 20px; padding-left: 6px">23</span></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 }
+                <!--////////////////////////////////////////////////////////////////////---微博文章展示框结束---///////////////////////////////////////////////////////////////////////////-->
+
 
             </div>
         </div>
-
     </div>
 </div>

@@ -193,7 +193,7 @@
     background-color: #f2f2f2;
     position:absolute;
     top:20px;
-    z-index: 999999;
+    z-index: 99;
 }
 
 #minddbar ul li {
@@ -246,7 +246,7 @@ ul li.xiala:hover #twobar {
 }
 
 .mindsearch {
-    margin-left: 30px;
+    margin-left: 180px;
     /*line-height:130px;*/
     /*border:1px solid black;*/
     margin-top: 0px;
@@ -271,10 +271,20 @@ ul li.xiala:hover #twobar {
 
 /*---------------------------------------------------发布微博框样式开始-----------------------------------------------------------*/
 .PublishWeibo {
-    margin-top:10px;
-    border:1px solid red;
+    margin-top:20px;
+    /*border:1px solid red;*/
     width: 868px;
-    height:800px;
+    height:auto;
+}
+/*发布微博按钮*/
+.PublishWeibobtn {
+    cursor:pointer;
+    margin-top:10px;
+    margin-bottom:10px;
+    margin-left:700px;
+    border-radius:10px;
+    width:80px;
+    height:40px;
 }
 /*---------------------------------------------------发布微博框样式结束-----------------------------------------------------------*/
 

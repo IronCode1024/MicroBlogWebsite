@@ -143,6 +143,7 @@
     <Content Include="Content\images\UserImg\UserMicroBlogImg\7.jpg" />
     <Content Include="Content\images\UserImg\UserMicroBlogImg\8.jpg" />
     <Content Include="Content\images\UserImg\UserMicroBlogImg\9.jpg" />
+    <Content Include="Content\videos\weibo.mp4" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\EasyUI\jquery-1.11.0.min.js" />
@@ -610,6 +611,7 @@
     <Compile Include="Model\UserInfoLogin.cs" />
     <Compile Include="Model\UserInfoRegister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestValidatorDisabled.cs" />
     <Compile Include="umeditor\net\Uploader.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -652,7 +654,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\videos\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

@@ -240,7 +240,7 @@ img {
 .mbArticleLeft {
     /*border: 1px solid blue;*/
     float: left;
-    width: 460px;
+    width: 690px;
     height: auto;
     margin-left: 10px;
 }
@@ -263,12 +263,13 @@ img {
     margin-top: 1px;
     float: right;
     /*border: 1px solid #808080;*/
-    width: 220px;
+    width: 300px;
     height: 20px;
     line-height: 22px;
 }
     .zfpldz a {
         color:#808080;
+        
     }
     .zfpldz a:hover {
         color:#eeb20d;
@@ -282,6 +283,7 @@ img {
     background-image: url(/Content/images/LayoutHome/zhuanfa.PNG);
     background-size: 20px 20px;
     background-repeat: no-repeat;
+    margin-right:20px;
 }
 
 .pl {
@@ -293,6 +295,7 @@ img {
     background-image: url(/Content/images/LayoutHome/pinglun.PNG);
     background-size: 20px 20px;
     background-repeat: no-repeat;
+    margin-right:20px;
 }
 
 .dz {
@@ -304,6 +307,7 @@ img {
     background-image: url(/Content/images/LayoutHome/dianzan.PNG);
     background-size: 20px 20px;
     background-repeat: no-repeat;
+    margin-right:20px;
 }
 /*文章下面的小图标Img*/
 .UserHeadImg {
@@ -335,6 +339,7 @@ img {
     width: 200px;
     height: 115px;
 }
+
 
 
 

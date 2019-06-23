@@ -50,6 +50,8 @@ namespace Models
         //[Required(AllowEmptyStrings = false)]//允许为空
         public string UserHeadPortrait { get; set; }//头像
 
+        //public string UserBgImg { get; set; }//背景图像
+
         //[Required(AllowEmptyStrings=false)]//允许为空
         public string UserAutograph { get; set; }//个性签名
         public bool States { get; set; }//在线状态

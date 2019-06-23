@@ -65,6 +65,16 @@ namespace BLL
             return uifSvc.ForgetThePwd(Uidto);
         }
 
+        /// <summary>
+        /// 登录成功后查询出用户的ID BLL层
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public IEnumerable<Models.UserInfo> getUserId(string email)
+        {
+            var uifSvc = new DAL.UserInfoService();
+            return uifSvc.getUserId(email);
+        }
 
 
 
@@ -110,9 +120,45 @@ namespace BLL
         }
 
 
+        //////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// 关注、粉丝、微博数 BLL
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
+        public int[] FFB(int UserId)
+        {
+            var uifSvc = new DAL.UserInfoService();
+            return uifSvc.FFB(UserId);
+        }
+        //////////////////////////////////////////////////////////////////
+
 
         //================================编辑资料开始=====================================//
 
+        //通过登陆后的id显示一些信息
+        public Models.UserInfo xian(int id)
+        {
+
+            var uifSvc = new DAL.UserInfoService();
+            var ui = uifSvc.xian(id);
+            return ui;
+        }
+        //保存图片路径
+        public int bao(DTO.UserInfoDto du)
+        {
+            var uifsvc = new DAL.UserInfoService();
+            int i = uifsvc.bao(du); ;
+
+            return i;
+        }
+        //保存资料
+        public int update(DTO.UserInfoDto du)
+        {
+            var uifsvc = new DAL.UserInfoService();
+            int i = uifsvc.update(du);
+            return i;
+        }
 
         //================================编辑资料结束=====================================//
     }

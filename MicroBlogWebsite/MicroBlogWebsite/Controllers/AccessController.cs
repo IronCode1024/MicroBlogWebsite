@@ -90,7 +90,13 @@ namespace MicroBlogWebsite.Controllers
                 }
                 else
                 {
-                    Session["User_Login"] = "1";//登录成功，给session赋值
+                    IEnumerable<Models.UserInfo> UserId = UimBll.getUserId(Email);//登录成功后查询出用户的ID
+                    foreach (Models.UserInfo item in UserId)
+                    {
+                        Session["User_Login"] = item.Id;//登录成功，给session赋值
+                        break;
+                    }
+                    
                     //Session.Timeout = 1;
                     return Redirect(Url.Action("Index", "Home"));
                 }

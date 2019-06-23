@@ -78,7 +78,8 @@
                                 break;
                             }
                             num++;
-                            <a href="/Access/Login"><!--javascript:alert(@item.Id)-->
+                            <a href="/Access/Login">
+                                <!--javascript:alert(@item.Id)-->
                                 <div class="newUserSp">
                                     <img src="@item.UserHeadPortrait" />
                                 </div>
@@ -120,7 +121,8 @@
                         }
 
                         <div class="nivoSon">
-                            <a href="/Access/Login"><!--javascript:alert(@item.UserID)-->
+                            <a href="/Access/Login">
+                                <!--javascript:alert(@item.UserID)-->
                                 <div class="nivoSp">
                                     <div class="nivoLeftImg"><img src="@item.Content_img" /></div>
                                     <div class="nivoRight">
@@ -171,51 +173,65 @@
             @* 浏览微博文章 *@
             <div id="centerBox" class="centerBox">
                 @{
+                    int numt = 0;
                     foreach (DTO.MicroBlogAndUserInfDto item in ViewBag.listPreviewBlog)
                     {
+                        numt += 1;
                         <div class="mbArticleBox">
                             <div class="mbArticleBoxSon">
                                 <div class="mbArticleLeft">
-                                    <div style="margin-top:10px;"><a class="titleCenter" href="/Access/Login"><p style="font-size:18px;">@item.Title</p></a></div>
-                                    <div style="margin-top: 20px;font-size:15px;">
-                                        @{
+                                    <!--用户头像和用户名展示-->
+                                    <div style="height:42px;line-height:50px;">
+                                        <a href="/Home/OthersMicrobolg?user=@item.UserID"><img class="UserHeadImg" src="@item.UserHeadPortrait" align="left" style="width: 40px;height: 40px;" /></a>
+                                        <span style="font-size:25px;">&nbsp;&nbsp;@item.UserName</span>
+                                    </div>
+                                    <br />
+
+                                    <div style="margin-top:10px;"><a class="titleCenter" href="/Access/Login"><p style="font-size:18px;">@Html.Raw(item.Title)</p></a></div>
+                                    <a href="/Access/Login" style="color:black;">
+                                        <div id="mbtext @numt" style="margin-top: 20px;font-size:22px;width:420px;">
+                                            @{
                         string str = "";//此变量存储最终要显示的标题
                         if (item.Content_text.Length > 50)
                         {
-                            str = item.Content_text.Substring(0, 50) + "......";//从0开始,截取8位
+                            str = item.Content_text.Substring(0,'/') + "......";//从0开始,截取8位
                         }
                         else
                         {
                             str = item.Content_text;//如果小于等于8位,则不变
                         }
-                        @str;
-                                        }
 
-                                    </div>
+                                            }
+                                            <script type="text/javascript">
+                                                document.getElementById('mbtext @numt').innerHTML = '@Html.Raw(@str)';
 
-                                    <div style="margin-top:20px;">
-                                        <div class="UserHeadDiv">
-                                            <img class="UserHeadImg" src="@item.UserHeadPortrait" />
-                                            <span class="UserNameSpan">@item.UserName &nbsp;&nbsp;&nbsp; @item.CreateTime.Year 年 @item.CreateTime.Month 月 @item.CreateTime.Day 日</span>
+                                            </script>
+
                                         </div>
+                                    </a>
 
+                                    <a href="/Access/Login" style="display:block;margin-left:470px;margin-top:-80px;">
+                                        <div>
+                                            <img class="mbArticleRightImg" src="@item.Content_img" />
+                                        </div>
+                                    </a>
+
+                                    <div style="margin-top:10px;width:660px;">
                                         <!--点赞评论转发-->
+                                        <span style="font-size:12px;color:#808080;">@item.CreateTime.Year 年 @item.CreateTime.Month 月 @item.CreateTime.Day 日</span>
                                         <div class="zfpldz">
-                                            <a href="/Access/Login"><span class="zf"><span style="margin-left:20px;">36592</span></span></a>
-                                            <a href="/Access/Login">
+
+                                            <a href="#"><span class="zf"><span style="margin-left:20px;">36592</span></span></a>
+                                            <a href="#">
                                                 <span class="pl"><span style="margin-left:20px;">2354</span></span>
                                             </a>
-                                            <a href="/Access/Login"><span class="dz"><span style="margin-left:20px;">@item.Points_number</span></span></a>
+                                            <a href="#"><span class="dz"><span style="margin-left:20px;">@item.Points_number</span></span></a>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="/Access/Login">
-                                    <div class="mbArticleRight">
-                                        <img class="mbArticleRightImg" src="@item.Content_img" />
-                                    </div>
-                                </a>
                             </div>
                         </div>
+                    <br />
                     }
                 }
             </div>
@@ -251,10 +267,11 @@
                         string nn = numtime.TotalMinutes.ToString("F0");
 
                         <div class="NewThingsSon">
-                            <a href="/Access/Login"> <!--javascript:alert(@item.UserID)-->
+                            <a href="/Access/Login">
+                                <!--javascript:alert(@item.UserID)-->
                                 <div class="NewThingsSp">
                                     <div class="NewThingsleft">
-                                        <div style="font-size:16px;margin-top:10px;height:50px;">@NewThingStr</div>
+                                        <div style="font-size:16px;margin-top:10px;height:50px;">@Html.Raw(NewThingStr)</div>
 
                                         <p style="font-size:12px;color:#808080;">@nn 分钟前</p>
                                     </div>
@@ -280,19 +297,19 @@
                                     break;
                                 }
                                 <li>
-                                    <a href="/Access/Login"> <!--javascript:alert(@item.Id)-->
-
+                                    <a href="/Access/Login">
+                                        <!--javascript:alert(@item.Id)-->
                                         @if (PopularUserNum <= 3)
                                         {
-                                            <b style="font-size:25px;">@PopularUserNum：@item.UserName</b>
+                                        <b style="font-size:25px;">@PopularUserNum：@item.UserName</b>
                                         }
                                         else
                                         {
                                             <span style="font-size:20px;">@PopularUserNum：@item.UserName</span>
                                         }
-                                        <span style="color:#808080;">粉丝数：@item.UserFansNum</span>
-                                    </a>
-                                </li>
+<span style="color:#808080;">粉丝数：@item.UserFansNum</span>
+</a>
+</li>
 
                                         PopularUserNum++;
                             }

@@ -92,11 +92,11 @@
             var me = this,
                 lang = me.lang,
                 conUrl = me.convert_url(url);
-
+            /* 去掉这一段，否则上传不是这3种格式视频文件会报错  自己注释的
             if(!me.endWith(conUrl,[".swf",".flv",".wmv"])){
                 $("#eduiVideoPreview", me.$widget).html( lang.urlError );
                 return;
-            }
+            }*/
             $("#eduiVideoPreview", me.$widget)[0].innerHTML = '<embed type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer"' +
                 ' src="' + url + '"' +
                 ' width="' + 420  + '"' +

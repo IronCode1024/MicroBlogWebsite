@@ -107,6 +107,17 @@ namespace BLL
             return PreviewBlogEntity;
         }
 
+        /// <summary>
+        /// 增加点赞数
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="Points"></param>
+        public int Points_number(int id)
+        {
+            var uifSvc = new DAL.UserInfoService();
+            return uifSvc.Points_number(id);
+        }
+
 
         /// <summary>
         /// 热门微博用户排名

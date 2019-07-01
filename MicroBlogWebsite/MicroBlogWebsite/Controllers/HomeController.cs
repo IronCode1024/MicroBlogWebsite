@@ -91,6 +91,13 @@ namespace MicroBlogWebsite.Controllers
             }
         }
 
+        public int Points_numbers()
+        {
+            int id = Convert.ToInt32(Request["id"]);
+            //string Points = Request["Points"];
+            return UimBll.Points_number(id);
+        }
+
         //[HttpPost]
         //public ActionResult Index(UserInfo ui)
         //{

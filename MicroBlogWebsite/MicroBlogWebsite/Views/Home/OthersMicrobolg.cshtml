@@ -130,9 +130,28 @@
                                     <a href="#">
                                         <span class="pl"><span style="margin-left:20px;">2354</span></span>
                                     </a>
-                                    <a href="#"><span class="dz"><span style="margin-left:20px;">@item.Points_number</span></span></a>
+                                    <a style="cursor:pointer;" onclick="Points_number(@item.Id)"><span class="dz"><span style="margin-left:20px;" id="Points">@item.Points_number</span></span></a>
                                 </div>
                             </div>
+
+                            <script type="text/javascript">
+                                //点赞数量
+                                function Points_number(ID) {
+                                    //alert(ID)
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '/Home/Points_numbers',
+                                        data: {
+                                            id: ID
+                                        },
+                                        success: function (msg) {
+                                            window.location = location;
+                                        }
+                                    });
+                                }
+                            </script>
+
+
                         </div>
                         @*<a href="#">
                                 <div class="mbArticleRight">

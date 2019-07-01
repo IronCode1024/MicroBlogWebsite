@@ -204,7 +204,7 @@
 
                                     <!--<div style="margin-top:10px;"><a class="titleCenter" href="/Home/OthersMicrobolg?user=@item.UserID"><p style="font-size:18px;">@item.Title </p></a></div>-->
                                     <!--微博正文  包含文字、图片、视频-->
-                                    <div id="mbtext @numt" style="border: 1px solid red;width:670px; margin-top: 0px; font-size: 15px; overflow: hidden" class="wb_content">
+                                    <div id="mbtext @numt" style="width:670px; margin-top: 0px; font-size: 15px; overflow: hidden" class="wb_content">
                                         <style type="text/css">
                                             .wb_content img {
                                                 padding-right: 20px;
@@ -237,13 +237,29 @@
                                     <div style="margin-top:10px;width:100%;">
                                         <!--点赞评论转发-->
                                         <div class="zfpldz">
-                                            <a href="#"><span class="zf"><span style="margin-left:20px;">36592</span></span></a>
-                                            <a href="#">
-                                                <span class="pl"><span style="margin-left:20px;">2354</span></span>
-                                            </a>
-                                            <a href="#"><span class="dz"><span style="margin-left:20px;">@item.Points_number</span></span></a>
+                                            @*<a href="#"><span class="zf"><span style="margin-left:20px;">36592</span></span></a>
+                                                <a href="#">
+                                                    <span class="pl"><span style="margin-left:20px;">2354</span></span>
+                                                </a>*@
+                                            <a style="cursor:pointer;" onclick="Points_number(@item.Id)"><span class="dz"><span style="margin-left:20px;" id="Points">@item.Points_number</span></span></a>
                                         </div>
                                     </div>
+                                    <script type="text/javascript">
+                                        //点赞数量
+                                        function Points_number(ID) {
+                                            //alert(ID)
+                                            $.ajax({
+                                                type: 'POST',
+                                                url: '/Home/Points_numbers',
+                                                data: {
+                                                    id: ID
+                                                },
+                                                success: function (msg) {
+                                                    window.location = location;
+                                                }
+                                            });
+                                        }
+                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -397,6 +413,6 @@
     </script>
 
     @* 清除浮动，使内容可以撑开父容器的高度 *@
-    @*<div style="clear:both"></div>*@<div style="clear:both"></div><div style="clear:both"></div><div style="clear:both"></div><div style="clear:both"></div><div style="clear:both"></div><div style="clear:both"></div><div style="clear:both"></div>
+    @*<div style="clear:both"></div>*@<div style="clear:both"></div><div style="clear:both"></div><div style="clear:both"></div><div style="clear:both"></div><div style="clear:both"></div><div style="clear:both"></div><div style="clear:both"></div><div style="clear:both"></div>
 
 </div>

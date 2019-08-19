@@ -163,7 +163,7 @@ namespace MicroBlogWebsite.Controllers
                 WebMail.SmtpPort = 587;
                 WebMail.EnableSsl = true;
                 WebMail.UserName = "1453190098";
-                WebMail.Password = "ltzmudrssqzfhihe";/*ltzmudrssqzfhihe  -邮箱授权码*/
+                WebMail.Password = "";/*  -邮箱授权码*/
                 WebMail.From = "1453190098@qq.com"; /*发送方邮箱*/
 
                 WebMail.Send(Email, "踏浪微博www.talang.com", "您好！您正在注册踏浪微博， " + "验证码为：" + InputVerificationCode.ToString());//2457284169@qq.com

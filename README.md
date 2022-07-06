@@ -15,6 +15,6 @@
 
 ## 直接下载
 ```bash
-git clone git@github.com:IronMan1024/MicroBlogWebsite.git
+git clone git@github.com:IronCode1024/MicroBlogWebsite.git
 ```
 使用Visual Studio2013以上版本打开项目文件即可！
